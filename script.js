@@ -25,7 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     return response.text();
                 })
                 .then(text => {
-                    modalBody.textContent = text;
+                    // Highlight date with neon style
+                    const formattedText = text.replace(/(date: \d{4}-\d{2}-\d{2})/i, '<span class="modal-date">$1</span>');
+                    modalBody.innerHTML = formattedText;
                     modal.style.display = 'block';
                 })
                 .catch(error => {

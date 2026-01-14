@@ -1,16 +1,18 @@
-# NA8US EXPANSION - Project Manifest (v2.3)
+# NA8US EXPANSION - Project Manifest (v2.4)
 
 ## Branding & Identity
 - **Main Brand:** NA8US EXPANSION
-- **Visual Style:** Cyberpunk, Neon.
+- **Tagline Fix:** Разделить на две строки строго через <br> в HTML:
+  1. ИИ-интеграция и автоматизация процессов.
+  2. Новая эра цифрового превосходства.
 
-## Layout Fixes
-- **Tagline:** Разделить на 2 строки строго через тег <br>:
-  Строка 1: ИИ-интеграция и автоматизация процессов.
-  Строка 2: Новая эра цифрового превосходства.
-- **Font:** Увеличить размер шрифта tagline до 1.2rem для читаемости.
+## Content & File System (CRITICAL)
+- **Article Path:** logs/articles/article1/article1.md (Убедиться, что расширение .md, а не .rtf).
+- **Image Path:** logs/articles/article1/article1.jpg.
+- **Glitch Effect:** Уменьшить интенсивность тряски картинки в 3 раза (сделать едва заметным мерцанием).
 
-## Content Fixes
-- **File System:** Использовать logs/articles/article1/article1.md (убедиться, что расширение .md, а не .rtf).
-- **Glitch:** Уменьшить частоту тряски картинки до минимальной (0.1s delay).
-- **Modal Window:** При нажатии на INITIATE READ_PROTOCOL открывать содержимое article1.md во всплывающем окне поверх сайта. Текст внутри окна - белый.
+## Functional Fixes
+- **Error "Network response was not ok":** Исправить script.js. Проблема в том, что fetch не находит файл или путь указан неверно.
+- **Modal Logic:** При нажатии на INITIATE READ_PROTOCOL открывать модальное окно. 
+- **Modal Content:** Считывать текст из article1.md. Если это Markdown, преобразовать в простой текст или использовать простой текстовый вывод.
+- **Readability:** Цвет текста в модальном окне — строго ярко-белый (#ffffff).

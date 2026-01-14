@@ -303,19 +303,19 @@ h2 {
     }
 
     20% {
-        transform: skewY(-3deg) scale(0.95) translate(-1px, 1px);
+        transform: skewY(-3deg) scale(0.95) translate(-0.5px, 0.5px);
     }
 
     40% {
-        transform: skewY(-3deg) scale(0.95) translate(-1px, -1px);
+        transform: skewY(-3deg) scale(0.95) translate(-0.5px, -0.5px);
     }
 
     60% {
-        transform: skewY(-3deg) scale(0.95) translate(1px, 1px);
+        transform: skewY(-3deg) scale(0.95) translate(0.5px, 0.5px);
     }
 
     80% {
-        transform: skewY(-3deg) scale(0.95) translate(1px, -1px);
+        transform: skewY(-3deg) scale(0.95) translate(0.5px, -0.5px);
     }
 
     100% {
@@ -466,4 +466,10 @@ footer {
 #modal-body {
     white-space: pre-wrap;
     line-height: 1.6;
+}
+
+.modal-date {
+    color: var(--primary-cyan);
+    text-shadow: 0 0 8px var(--primary-cyan);
+    font-weight: bold;
 }
