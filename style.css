@@ -296,8 +296,36 @@ h2 {
     margin: 10px 0 30px 0;
 }
 
+/* Glitch/Tremor Effect on Hover (preserving skew) */
+@keyframes glitch-tremor {
+    0% {
+        transform: skewY(-3deg) scale(0.95) translate(0);
+    }
+
+    20% {
+        transform: skewY(-3deg) scale(0.95) translate(-3px, 3px);
+    }
+
+    40% {
+        transform: skewY(-3deg) scale(0.95) translate(-3px, -3px);
+    }
+
+    60% {
+        transform: skewY(-3deg) scale(0.95) translate(3px, 3px);
+    }
+
+    80% {
+        transform: skewY(-3deg) scale(0.95) translate(3px, -3px);
+    }
+
+    100% {
+        transform: skewY(-3deg) scale(0.95) translate(0);
+    }
+}
+
 .log-card.featured:hover .img-container {
     box-shadow: 0 0 30px var(--primary-cyan);
+    animation: glitch-tremor 0.2s infinite;
 }
 
 .article-img {
@@ -321,7 +349,7 @@ h2 {
     font-size: 0.9rem;
     margin-bottom: 20px;
     flex-grow: 1;
-    color: #aaa;
+    color: #ffffff;
 }
 
 .read-btn {
