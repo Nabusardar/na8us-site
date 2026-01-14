@@ -1,18 +1,12 @@
-# NA8US EXPANSION - Project Manifest (v2.4)
+# NA8US EXPANSION - Project Manifest (v2.5)
 
-## Branding & Identity
-- **Main Brand:** NA8US EXPANSION
-- **Tagline Fix:** Разделить на две строки строго через <br> в HTML:
-  1. ИИ-интеграция и автоматизация процессов.
-  2. Новая эра цифрового превосходства.
+## Content Display Logic
+- **Clean Text:** При выводе статьи в модальное окно НЕ ПОКАЗЫВАТЬ метаданные (теги между ---). Только заголовок и основной текст статьи.
+- **Neon Date:** Фиолетовая дата на карточке статьи должна иметь неоновое свечение (box-shadow/text-shadow).
+- **Article Header:** Внутри модального окна, перед текстом статьи, должна отображаться картинка logs/articles/article1/article1.jpg.
+- **Image Zoom:** Сделать картинку в статье кликабельной для увеличения (lightbox эффект).
 
-## Content & File System (CRITICAL)
-- **Article Path:** logs/articles/article1/article1.md (Убедиться, что расширение .md, а не .rtf).
-- **Image Path:** logs/articles/article1/article1.jpg.
-- **Glitch Effect:** Уменьшить интенсивность тряски картинки в 3 раза (сделать едва заметным мерцанием).
-
-## Functional Fixes
-- **Error "Network response was not ok":** Исправить script.js. Проблема в том, что fetch не находит файл или путь указан неверно.
-- **Modal Logic:** При нажатии на INITIATE READ_PROTOCOL открывать модальное окно. 
-- **Modal Content:** Считывать текст из article1.md. Если это Markdown, преобразовать в простой текст или использовать простой текстовый вывод.
-- **Readability:** Цвет текста в модальном окне — строго ярко-белый (#ffffff).
+## Technical Requirements
+- Цвет текста в модальном окне: Белый (#ffffff).
+- Фон модального окна: Темный полупрозрачный (Glassmorphism).
+- Убрать метаданные из видимой части статьи.

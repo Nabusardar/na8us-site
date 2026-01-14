@@ -25,9 +25,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     return response.text();
                 })
                 .then(text => {
-                    // Highlight date with neon style
-                    const formattedText = text.replace(/(date: \d{4}-\d{2}-\d{2})/i, '<span class="modal-date">$1</span>');
-                    modalBody.innerHTML = formattedText;
+                    // Remove frontmatter (metadata between ---)
+                    const cleanText = text.replace(/^---[\s\S]*?---/, '').trim();
+
+                    // Add image at the beginning
+                    const imgHtml = '<img src="logs/articles/article1/article1.jpg" class="modal-article-img" alt="Article Cover">';
+
+                    modalBody.innerHTML = imgHtml + '\n\n' + cleanText;
+
+                    // Lightbox logic for the image
+                    const img = modalBody.querySelector('.modal-article-img');
+                    if (img) {
+                        img.addEventListener('click', () => {
+                            img.classList.toggle('zoomed');
+                        });
+                    }
+
                     modal.style.display = 'block';
                 })
                 .catch(error => {
