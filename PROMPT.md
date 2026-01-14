@@ -1,33 +1,16 @@
-# NA8US EXPANSION - Project Manifest (v2.2)
+# NA8US EXPANSION - Project Manifest (v2.3)
 
 ## Branding & Identity
 - **Main Brand:** NA8US EXPANSION
-- **Tagline:** Интеллектуальная экспансия и автоматизация бизнес-архитектуры.
-- **Visual Style:** Cyberpunk, Futuristic, Glassmorphism.
-- **Color Palette:** Background #0a0a12, Primary Cyan #00f3ff, Accents #7000ff.
+- **Visual Style:** Cyberpunk, Neon.
 
-## Network (Active Social Links)
-- **Instagram:** https://www.instagram.com/mr.sheleg/
-- **Telegram:** https://t.me/nabus_blog/10
-- **YouTube:** https://www.youtube.com/@nabus_Expansion
-- **TikTok:** https://www.tiktok.com/@n_a_b_u_s
-- **LinkedIn:** https://www.linkedin.com/in/esheleh/
-- **GitHub:** https://github.com/Nabusardar
+## Layout Fixes
+- **Tagline:** Разделить на 2 строки строго через тег <br>:
+  Строка 1: ИИ-интеграция и автоматизация процессов.
+  Строка 2: Новая эра цифрового превосходства.
+- **Font:** Увеличить размер шрифта tagline до 1.2rem для читаемости.
 
-## Content Engine: "EXPANSION LOGS"
-- **Article 1:** "Твой клиент больше не человек: как Google UCP рождает B2A"
-- **Manual Date:** "14 Января 2026"
-- **File Path:** logs/articles/article1/article1.md
-- **Image Path:** logs/articles/article1/article1.jpg
-- **Visual Task:** Креативное асимметричное расположение изображения. Применить эффект "Glitch" (тремор/баг) к article1.jpg при наведении или постоянно.
-- **Readability:** Основной текст статьи — строго белый (#ffffff) или максимально светлый для контраста.
-
-## Technical & GEO Strategy
-- **Target:** AI Search Engines (Perplexity, Gemini, SearchGPT).
-- **SEO:** Использовать семантику HTML5 (<article>, <section>), микроразметку Schema.org.
-- **Interaction:** Кнопка "INITIATE READ_PROTOCOL" должна открывать полный текст статьи из .md файла (в модальном окне или на новой странице).
-- **Paths:** Все пути к медиафайлам указывать относительно корня проекта (без ../).
-
-## Bug Fixes
-- Исправить отображение картинки (проверить путь logs/articles/article1/article1.jpg).
-- Убрать прозрачность у текста статей, сделать его 100% читаемым.
+## Content Fixes
+- **File System:** Использовать logs/articles/article1/article1.md (убедиться, что расширение .md, а не .rtf).
+- **Glitch:** Уменьшить частоту тряски картинки до минимальной (0.1s delay).
+- **Modal Window:** При нажатии на INITIATE READ_PROTOCOL открывать содержимое article1.md во всплывающем окне поверх сайта. Текст внутри окна - белый.
