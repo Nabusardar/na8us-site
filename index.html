@@ -5,45 +5,124 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NA8US AI HUB</title>
+
+    <!-- Fonts: Orbitron & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@400;700;900&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #0a0a12;
+            --accent-color: #00f3ff;
+            --text-color: #ffffff;
+            --font-header: 'Orbitron', sans-serif;
+            --font-text: 'JetBrains Mono', monospace;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-text);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1.glitch {
+            font-family: var(--font-header);
+            font-size: 3rem;
+            margin: 0 0 20px 0;
+            letter-spacing: 2px;
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+        }
+
+        .sub-header {
+            font-size: 1.2rem;
+            line-height: 1.5;
+            color: #e0e0e0;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            text-decoration: none;
+            font-family: var(--font-header);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            background: rgba(0, 243, 255, 0.1);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+        }
+
+        .btn:hover {
+            background: rgba(0, 243, 255, 0.2);
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.6);
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid rgba(0, 243, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        footer span {
+            color: var(--accent-color);
+        }
+    </style>
 </head>
 
 <body>
 
     <div class="container">
 
-        <h1 class="glitch">NA8US <span style="color: #00f3ff;">AI HUB</span></h1>
+        <h1 class="glitch">NA8US <span class="highlight">AI HUB</span></h1>
 
-        <p
-            style="font-family: 'Orbitron', sans-serif; font-size: 1.2rem; margin: 20px 0; line-height: 1.5; color: #e0e0e0;">
+        <p class="sub-header">
             ИИ Интеграция в бизнес и<br>
             Автоматизация процессов
         </p>
 
-        <div class="btn-container" style="margin-top: 30px;">
-            <a href="https://t.me/nabus_blog/10" target="_blank" class="btn" style="
-                display: inline-block;
-                padding: 15px 30px;
-                border: 2px solid #00f3ff;
-                color: #00f3ff;
-                text-decoration: none;
-                font-family: 'Orbitron', sans-serif;
-                font-weight: bold;
-                text-transform: uppercase;
-                letter-spacing: 2px;
-                transition: all 0.3s ease;
-                background: rgba(0, 243, 255, 0.1);
-            ">
+        <div class="btn-container">
+            <a href="https://t.me/nabus_blog/10" target="_blank" class="btn">
                 NÅ8ⓤS EXPANSION
             </a>
         </div>
 
     </div>
 
+    <footer>
+        <p>&copy; 2026 NA8US SYSTEM. <br> Designed by <span>AI Architect</span>.</p>
+    </footer>
+
     <script src="script.js"></script>
-    <script src="js/script.js"></script>
 
 </body>
 
