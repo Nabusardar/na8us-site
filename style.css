@@ -1,0 +1,242 @@
+:root {
+    --bg-color: #0a0a12;
+    --primary-cyan: #00f3ff;
+    --accent-purple: #7000ff;
+    --text-color: #ffffff;
+    --font-header: 'Orbitron', sans-serif;
+    --font-text: 'JetBrains Mono', monospace;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-text);
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* Typography */
+h1,
+h2,
+h3 {
+    font-family: var(--font-header);
+    text-transform: uppercase;
+}
+
+p {
+    line-height: 1.6;
+    color: #e0e0e0;
+}
+
+/* Layout */
+section {
+    padding: 120px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Hero */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: radial-gradient(circle at center, rgba(112, 0, 255, 0.1) 0%, rgba(10, 10, 18, 1) 70%);
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+    position: relative;
+}
+
+.sub-header {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/* Glitch Effect */
+.glitch {
+    position: relative;
+    color: var(--text-color);
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -1px 0 var(--accent-purple);
+    clip: rect(24px, 550px, 90px, 0);
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -1px 0 var(--primary-cyan);
+    clip: rect(85px, 550px, 140px, 0);
+    animation: glitch-anim 2.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% {
+        clip: rect(10px, 9999px, 31px, 0);
+    }
+
+    20% {
+        clip: rect(75px, 9999px, 86px, 0);
+    }
+
+    40% {
+        clip: rect(20px, 9999px, 60px, 0);
+    }
+
+    60% {
+        clip: rect(50px, 9999px, 90px, 0);
+    }
+
+    80% {
+        clip: rect(10px, 9999px, 40px, 0);
+    }
+
+    100% {
+        clip: rect(80px, 9999px, 100px, 0);
+    }
+}
+
+@keyframes glitch-anim-2 {
+    0% {
+        clip: rect(60px, 9999px, 80px, 0);
+    }
+
+    20% {
+        clip: rect(10px, 9999px, 30px, 0);
+    }
+
+    40% {
+        clip: rect(90px, 9999px, 100px, 0);
+    }
+
+    60% {
+        clip: rect(15px, 9999px, 45px, 0);
+    }
+
+    80% {
+        clip: rect(50px, 9999px, 70px, 0);
+    }
+
+    100% {
+        clip: rect(20px, 9999px, 40px, 0);
+    }
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 15px 40px;
+    border: 1px solid var(--primary-cyan);
+    color: var(--primary-cyan);
+    text-decoration: none;
+    font-family: var(--font-header);
+    font-weight: 700;
+    letter-spacing: 2px;
+    transition: 0.3s;
+    background: rgba(0, 243, 255, 0.05);
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.1);
+    text-transform: uppercase;
+}
+
+.btn:hover {
+    background: var(--primary-cyan);
+    color: #000;
+    box-shadow: 0 0 30px var(--primary-cyan);
+    transform: scale(1.05);
+}
+
+/* Sections */
+h2 {
+    font-size: 2.5rem;
+    color: var(--primary-cyan);
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.about-text {
+    font-size: 1.5rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    border-left: 3px solid var(--accent-purple);
+    padding-left: 20px;
+}
+
+/* Services Grid */
+.vectors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.vector-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(112, 0, 255, 0.3);
+    padding: 40px;
+    transition: 0.4s;
+}
+
+.vector-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-cyan);
+    box-shadow: 0 10px 30px rgba(0, 243, 255, 0.1);
+}
+
+.vector-card h3 {
+    color: var(--primary-cyan);
+    margin-top: 0;
+    font-size: 1.4rem;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 50px;
+}
+
+.status-ok {
+    color: var(--primary-cyan);
+    font-weight: bold;
+}
+
+.contacts {
+    text-align: center;
+}
+
+/* Scroll Animation Classes */
+.hidden {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease-out;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}

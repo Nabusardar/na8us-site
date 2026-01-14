@@ -1,20 +1,27 @@
-# NA8US SYSTEM - Project Manifest
+# NA8US EXPANSION - Project Manifest
 
-## Role & Style
-- **Identity:** Personal Digital Hub for an AI Architect & Integrator.
-- **Visual Style:** Cyberpunk, Neon, Futuristic, Dark Mode, High-Tech.
-- **Colors:** Deep Black/Purple background (#0a0a12), Cyan Neon accents (#00f3ff), White text.
-- **Font:** 'Orbitron' (headers), 'JetBrains Mono' (code/text).
+## Branding & Identity
+- **Main Brand:** NA8US EXPANSION
+- **Core Concept:** Интеллектуальная экспансия и автоматизация бизнес-архитектуры.
+- **Visual Style:** Cyberpunk, Futuristic, Dark Mode.
+- **Color Palette:** Background #0a0a12, Primary Cyan #00f3ff, Accents #7000ff (Purple).
+- **Fonts:** 'Orbitron' for headers, 'JetBrains Mono' for body text.
 
-## Content Structure
-1. **Header:** "NA8US AI HUB" (Glitch effect).
-2. **Sub-header:** "ИИ Интеграция в бизнес и Автоматизация процессов".
-3. **CTA Button:** "NÅ8ⓤS EXPANSION" -> Links to Telegram (https://t.me/nabus_blog/10).
+## Structure & Content
 
-## Technical Stack
-- HTML5, CSS3 (Flexbox/Grid).
-- No heavy frameworks, pure vanilla JS for animations.
-## Roadmap Update
-- Сделать главную страницу длинным лендингом.
-- Добавить секцию "Services" с тремя карточками: 1. AI Consulting, 2. Process Automation, 3. Custom AI Tools.
-- Добавить секцию "Contacts" перед футером.
+### 1. Hero Section
+- **Title:** NA8US EXPANSION (with glitch effect)
+- **Tagline:** ИИ-интеграция и автоматизация процессов. Новая эра цифрового превосходства.
+- **CTA Button:** "НАЧАТЬ ЭКСПАНСИЮ" -> https://t.me/nabus_blog/10
+
+### 2. Section: "О системе Expansion"
+- **Text:** Это не просто автоматизация. Это создание автономной цифровой экосистемы, которая работает быстрее, точнее и эффективнее человеческого ресурса. Мы внедряем интеллект там, где раньше был хаос.
+
+### 3. Section: "Векторы развития" (Services)
+- **Vector I: AI Architecture.** Проектирование и внедрение нейросетевых решений в бизнес-логику.
+- **Vector II: Autonomous Agents.** Создание цифровых сотрудников на базе n8n/Make, работающих 24/7.
+- **Vector III: Data Intelligence.** Превращение массивов данных в работающие инсайты и автоматические действия.
+
+### 4. Section: "Связь с центром" (Contacts)
+- **Text:** Подключайтесь к авторскому каналу Эда для отслеживания прогресса и новых интеграций.
+- **Footer:** © 2026 NA8US EXPANSION. System status: Operational.

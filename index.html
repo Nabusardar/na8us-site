@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Na8us Expansion</title>
+    <title>NA8US EXPANSION</title>
 
     <!-- Fonts: Orbitron & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,193 +14,55 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
-
-    <style>
-        :root {
-            --bg-color: #0a0a12;
-            --accent-color: #00f3ff;
-            --text-color: #ffffff;
-            --font-header: 'Orbitron', sans-serif;
-            --font-text: 'JetBrains Mono', monospace;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: var(--font-text);
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        /* Hero Section (Главный экран) */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-        }
-
-        /* Общие стили секций */
-        section {
-            padding: 100px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        h2 {
-            font-family: var(--font-header);
-            color: var(--accent-color);
-            font-size: 2.5rem;
-            margin-bottom: 60px;
-            text-align: center;
-            text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
-        }
-
-        /* Сетка услуг */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(0, 243, 255, 0.2);
-            padding: 40px 30px;
-            transition: all 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 0 25px rgba(0, 243, 255, 0.15);
-            border-color: var(--accent-color);
-            background: rgba(0, 243, 255, 0.05);
-        }
-
-        .service-card h3 {
-            font-family: var(--font-header);
-            color: #fff;
-            margin-top: 0;
-            margin-bottom: 15px;
-            font-size: 1.4rem;
-        }
-
-        h1.glitch {
-            font-family: var(--font-header);
-            font-size: 3rem;
-            margin: 0 0 20px 0;
-            letter-spacing: 2px;
-        }
-
-        .highlight {
-            color: var(--accent-color);
-            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
-        }
-
-        .sub-header {
-            font-size: 1.2rem;
-            line-height: 1.5;
-            color: #e0e0e0;
-            margin-bottom: 40px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            border: 2px solid var(--accent-color);
-            color: var(--accent-color);
-            text-decoration: none;
-            font-family: var(--font-header);
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-            background: rgba(0, 243, 255, 0.1);
-            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
-        }
-
-        .btn:hover {
-            background: rgba(0, 243, 255, 0.2);
-            box-shadow: 0 0 25px rgba(0, 243, 255, 0.6);
-            transform: scale(1.05);
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            border-top: 1px solid rgba(0, 243, 255, 0.1);
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.5);
-            background: rgba(0, 0, 0, 0.2);
-            margin-top: auto;
-        }
-
-        footer span {
-            color: var(--accent-color);
-        }
-
-        .contacts {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-    </style>
 </head>
 
 <body>
 
     <!-- Hero Section -->
     <section class="hero">
-
-        <h1 class="glitch">NA8US <span class="highlight">AI HUB</span></h1>
-
-        <p class="sub-header">
-            ИИ Интеграция в бизнес и<br>
-            Автоматизация процессов
-        </p>
-
-        <div class="btn-container">
-            <a href="https://t.me/nabus_blog/10" target="_blank" class="btn">
-                NÅ8ⓤS EXPANSION
-            </a>
+        <h1 class="glitch" data-text="NA8US EXPANSION">NA8US EXPANSION</h1>
+        <p class="sub-header hidden">ИИ-интеграция и автоматизация процессов. Новая эра цифрового превосходства.</p>
+        <div class="btn-container hidden">
+            <a href="https://t.me/nabus_blog/10" target="_blank" class="btn">НАЧАТЬ ЭКСПАНСИЮ</a>
         </div>
-
     </section>
 
-    <!-- Services Section -->
-    <section id="services">
-        <h2>Services</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>AI Consulting</h3>
-                <p>Стратегический аудит и внедрение нейросетей для кратного роста эффективности бизнеса.</p>
+    <!-- About Section -->
+    <section id="about" class="hidden">
+        <h2>О системе Expansion</h2>
+        <p class="about-text">Это не просто автоматизация. Это создание автономной цифровой экосистемы, которая работает
+            быстрее, точнее и эффективнее человеческого ресурса. Мы внедряем интеллект там, где раньше был хаос.</p>
+    </section>
+
+    <!-- Vectors (Services) Section -->
+    <section id="vectors" class="hidden">
+        <h2>Векторы развития</h2>
+        <div class="vectors-grid">
+            <div class="vector-card">
+                <h3>Vector I: AI Architecture</h3>
+                <p>Проектирование и внедрение нейросетевых решений в бизнес-логику.</p>
             </div>
-            <div class="service-card">
-                <h3>Process Automation</h3>
-                <p>Разработка автономных AI-агентов для автоматизации рутины и обработки данных.</p>
+            <div class="vector-card">
+                <h3>Vector II: Autonomous Agents</h3>
+                <p>Создание цифровых сотрудников на базе n8n/Make, работающих 24/7.</p>
             </div>
-            <div class="service-card">
-                <h3>Custom AI Tools</h3>
-                <p>Создание уникальных инструментов и чат-ботов, заточенных под специфику вашей архитектуры.</p>
+            <div class="vector-card">
+                <h3>Vector III: Data Intelligence</h3>
+                <p>Превращение массивов данных в работающие инсайты и автоматические действия.</p>
             </div>
         </div>
     </section>
 
     <!-- Contacts Section -->
-    <section id="contacts" class="contacts">
-        <h2>Contacts</h2>
-        <p class="sub-header">Готовы трансформировать реальность?</p>
-        <a href="https://t.me/nabus_blog/10" target="_blank" class="btn">Связаться в Telegram</a>
+    <section id="contacts" class="contacts hidden">
+        <h2>Связь с центром</h2>
+        <p class="sub-header">Подключайтесь к авторскому каналу Эда для отслеживания прогресса и новых интеграций.</p>
+        <br>
+        <a href="https://t.me/nabus_blog/10" target="_blank" class="btn">OPEN CHANNEL</a>
     </section>
 
     <footer>
-        <p>&copy; 2026 NA8US SYSTEM. <br> Designed by <span>AI Architect</span>.</p>
+        <p>© 2026 NA8US EXPANSION. System status: <span class="status-ok">Operational</span>.</p>
     </footer>
 
     <script src="script.js"></script>
