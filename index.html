@@ -34,14 +34,62 @@
             min-height: 100vh;
         }
 
-        .container {
-            flex: 1;
+        /* Hero Section (Главный экран) */
+        .hero {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 20px;
+        }
+
+        /* Общие стили секций */
+        section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            font-family: var(--font-header);
+            color: var(--accent-color);
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+        }
+
+        /* Сетка услуг */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            padding: 40px 30px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.15);
+            border-color: var(--accent-color);
+            background: rgba(0, 243, 255, 0.05);
+        }
+
+        .service-card h3 {
+            font-family: var(--font-header);
+            color: #fff;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
         }
 
         h1.glitch {
@@ -91,17 +139,24 @@
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.5);
             background: rgba(0, 0, 0, 0.2);
+            margin-top: auto;
         }
 
         footer span {
             color: var(--accent-color);
+        }
+
+        .contacts {
+            text-align: center;
+            margin-bottom: 40px;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
+    <!-- Hero Section -->
+    <section class="hero">
 
         <h1 class="glitch">NA8US <span class="highlight">AI HUB</span></h1>
 
@@ -116,7 +171,33 @@
             </a>
         </div>
 
-    </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2>Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>AI Consulting</h3>
+                <p>Стратегический аудит и внедрение нейросетей для кратного роста эффективности бизнеса.</p>
+            </div>
+            <div class="service-card">
+                <h3>Process Automation</h3>
+                <p>Разработка автономных AI-агентов для автоматизации рутины и обработки данных.</p>
+            </div>
+            <div class="service-card">
+                <h3>Custom AI Tools</h3>
+                <p>Создание уникальных инструментов и чат-ботов, заточенных под специфику вашей архитектуры.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacts Section -->
+    <section id="contacts" class="contacts">
+        <h2>Contacts</h2>
+        <p class="sub-header">Готовы трансформировать реальность?</p>
+        <a href="https://t.me/nabus_blog/10" target="_blank" class="btn">Связаться в Telegram</a>
+    </section>
 
     <footer>
         <p>&copy; 2026 NA8US SYSTEM. <br> Designed by <span>AI Architect</span>.</p>

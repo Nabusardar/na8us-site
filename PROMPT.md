@@ -14,3 +14,7 @@
 ## Technical Stack
 - HTML5, CSS3 (Flexbox/Grid).
 - No heavy frameworks, pure vanilla JS for animations.
+## Roadmap Update
+- Сделать главную страницу длинным лендингом.
+- Добавить секцию "Services" с тремя карточками: 1. AI Consulting, 2. Process Automation, 3. Custom AI Tools.
+- Добавить секцию "Contacts" перед футером.
