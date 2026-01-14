@@ -25,3 +25,7 @@
 ### 4. Section: "Связь с центром" (Contacts)
 - **Text:** Подключайтесь к авторскому каналу Эда для отслеживания прогресса и новых интеграций.
 - **Footer:** © 2026 NA8US EXPANSION. System status: Operational.
+## Social & Content Expansion
+- **Social Links:** Добавить блок с иконками (Telegram, GitHub, YouTube, LinkedIn).
+- **Blog Section:** Создать раздел "EXPANSION LOGS" (сетка из карточек для будущих статей).
+- **Article Card Style:** Каждая карточка должна иметь заголовок, дату, краткое превью и кнопку "Read Log".
