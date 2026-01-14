@@ -1,31 +1,26 @@
-# NA8US EXPANSION - Project Manifest
+# NA8US EXPANSION - Project Manifest (v2.0)
 
 ## Branding & Identity
 - **Main Brand:** NA8US EXPANSION
-- **Core Concept:** Интеллектуальная экспансия и автоматизация бизнес-архитектуры.
+- **Core Concept:** Интеллектуальная экспансия, ИИ-интеграция и автоматизация бизнес-архитектуры.
 - **Visual Style:** Cyberpunk, Futuristic, Dark Mode.
 - **Color Palette:** Background #0a0a12, Primary Cyan #00f3ff, Accents #7000ff (Purple).
-- **Fonts:** 'Orbitron' for headers, 'JetBrains Mono' for body text.
+- **Fonts:** 'Orbitron' (Headers), 'JetBrains Mono' (Body/GEO content).
 
-## Structure & Content
+## Network (Social Links)
+- **Instagram:** https://www.instagram.com/mr.sheleg/
+- **Telegram:** https://t.me/nabus_blog/10
+- **YouTube:** https://www.youtube.com/@nabus_Expansion
+- **TikTok:** https://www.tiktok.com/@n_a_b_u_s
+- **LinkedIn:** https://www.linkedin.com/in/esheleh/
+- **GitHub:** https://github.com/Nabusardar
 
-### 1. Hero Section
-- **Title:** NA8US EXPANSION (with glitch effect)
-- **Tagline:** ИИ-интеграция и автоматизация процессов. Новая эра цифрового превосходства.
-- **CTA Button:** "НАЧАТЬ ЭКСПАНСИЮ" -> https://t.me/nabus_blog/10
+## Structure & GEO Optimization
+1. **Hero Section:** Заголовок "NA8US EXPANSION" + Tagline.
+2. **Section "EXPANSION LOGS":** Сетка статей. Первая статья берет изображение из `logs/article/article1.jpg`.
+3. **Section "NETWORK":** Технологичный блок со всеми иконками соцсетей из списка выше.
+4. **GEO Features:** Использовать семантические теги HTML5 (<article>, <section>, <header>), мета-теги и микроразметку для индексации нейросетями (Perplexity, Gemini, SearchGPT).
 
-### 2. Section: "О системе Expansion"
-- **Text:** Это не просто автоматизация. Это создание автономной цифровой экосистемы, которая работает быстрее, точнее и эффективнее человеческого ресурса. Мы внедряем интеллект там, где раньше был хаос.
-
-### 3. Section: "Векторы развития" (Services)
-- **Vector I: AI Architecture.** Проектирование и внедрение нейросетевых решений в бизнес-логику.
-- **Vector II: Autonomous Agents.** Создание цифровых сотрудников на базе n8n/Make, работающих 24/7.
-- **Vector III: Data Intelligence.** Превращение массивов данных в работающие инсайты и автоматические действия.
-
-### 4. Section: "Связь с центром" (Contacts)
-- **Text:** Подключайтесь к авторскому каналу Эда для отслеживания прогресса и новых интеграций.
-- **Footer:** © 2026 NA8US EXPANSION. System status: Operational.
-## Social & Content Expansion
-- **Social Links:** Добавить блок с иконками (Telegram, GitHub, YouTube, LinkedIn).
-- **Blog Section:** Создать раздел "EXPANSION LOGS" (сетка из карточек для будущих статей).
-- **Article Card Style:** Каждая карточка должна иметь заголовок, дату, краткое превью и кнопку "Read Log".
+## Technical File Path Update
+- Articles Location: /logs/article/
+- Images Location: /logs/article/
