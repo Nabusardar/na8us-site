@@ -1,39 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Combined Parallax (Floating) & Tilt Effect
-    document.addEventListener('mousemove', (e) => {
-        const units = document.querySelectorAll('.unit');
-
-        // Center of screen
-        const cx = window.innerWidth / 2;
-        const cy = window.innerHeight / 2;
-
-        // Mouse position relative to center
-        const dx = e.clientX - cx;
-        const dy = e.clientY - cy;
-
-        units.forEach(unit => {
-            const speed = parseFloat(unit.getAttribute('data-speed')) || 1;
-
-            // Parallax (Move opposite to mouse)
-            const tx = -(dx / 100) * speed;
-            const ty = -(dy / 100) * speed;
-
-            // Tilt (Rotate towards mouse)
-            // Calculate mouse pos relative to card center for better tilt
-            const rect = unit.getBoundingClientRect();
-            const cardCx = rect.left + rect.width / 2;
-            const cardCy = rect.top + rect.height / 2;
-            const cardDx = e.clientX - cardCx;
-            const cardDy = e.clientY - cardCy;
-
-            const rotateX = -(cardDy / rect.height) * 5; // Max 5 deg
-            const rotateY = (cardDx / rect.width) * 5;
-
-            unit.style.transform = `translate3d(${tx}px, ${ty}px, 0) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        });
-    });
-});
-
 let articleLoaded = false;
 
 function openModal() {

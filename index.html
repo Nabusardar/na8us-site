@@ -18,7 +18,7 @@
 <body>
     <div class="bento-grid">
         <!-- Bio Unit (2x2) -->
-        <div class="unit bio" data-speed="2">
+        <div class="unit bio" data-tilt data-tilt-max="5" data-tilt-glare data-tilt-max-glare="0.2">
             <div class="bio-content">
                 <h1 class="brand">NA8US<br>EXPANSION</h1>
                 <p class="tagline">ИИ-интеграция и автоматизация процессов. Новая эра цифрового превосходства.</p>
@@ -26,7 +26,8 @@
         </div>
 
         <!-- Featured Article (2x2) -->
-        <div class="unit article" onclick="openModal()" data-speed="3">
+        <div class="unit article" onclick="openModal()" data-tilt data-tilt-max="5" data-tilt-glare
+            data-tilt-max-glare="0.3">
             <div class="article-bg" style="background-image: url('logs/articles/article1/article1.jpg');"></div>
             <div class="article-overlay">
                 <span class="article-tag">ПОСЛЕДНЯЯ СТАТЬЯ</span>
@@ -35,25 +36,19 @@
         </div>
 
         <!-- Socials Unit (2x1) -->
-        <div class="unit socials" data-speed="4">
-            <a href="https://www.instagram.com/mr.sheleg/" target="_blank" class="social-link">
-                <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="https://t.me/nabus_blog/10" target="_blank" class="social-link">
-                <i class="fa-brands fa-telegram"></i>
-            </a>
-            <a href="https://www.youtube.com/@nabus_Expansion" target="_blank" class="social-link">
-                <i class="fa-brands fa-youtube"></i>
-            </a>
-            <a href="https://www.tiktok.com/@n_a_b_u_s" target="_blank" class="social-link">
-                <i class="fa-brands fa-tiktok"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/esheleh/" target="_blank" class="social-link">
-                <i class="fa-brands fa-linkedin"></i>
-            </a>
-            <a href="https://github.com/Nabusardar" target="_blank" class="social-link">
-                <i class="fa-brands fa-github"></i>
-            </a>
+        <div class="unit socials" data-tilt data-tilt-max="5" data-tilt-glare data-tilt-max-glare="0.1">
+            <a href="https://www.instagram.com/mr.sheleg/" target="_blank" class="social-link"><i
+                    class="fa-brands fa-instagram"></i></a>
+            <a href="https://t.me/nabus_blog/10" target="_blank" class="social-link"><i
+                    class="fa-brands fa-telegram"></i></a>
+            <a href="https://www.youtube.com/@nabus_Expansion" target="_blank" class="social-link"><i
+                    class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.tiktok.com/@n_a_b_u_s" target="_blank" class="social-link"><i
+                    class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.linkedin.com/in/esheleh/" target="_blank" class="social-link"><i
+                    class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/Nabusardar" target="_blank" class="social-link"><i
+                    class="fa-brands fa-github"></i></a>
         </div>
     </div>
 
@@ -63,12 +58,13 @@
         <div class="modal-window">
             <button class="close-btn" onclick="closeModal()">×</button>
             <div class="modal-body" id="modal-content">
-                <!-- Content will be loaded from logs/articles/article1/article1.md -->
                 <div class="loading-spinner">Загрузка данных...</div>
             </div>
         </div>
     </div>
 
+    <!-- Vanilla Tilt Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
     <script src="script.js"></script>
 </body>
 
