@@ -141,8 +141,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch('logs/articles/article1/article1.md');
             if (!response.ok) throw new Error('Файл не найден');
 
-            const markdown = await response.text();
-            articleContent.innerHTML = marked.parse(markdown);
+            let markdown = await response.text();
+
+            // Убираем YAML frontmatter (--- ... ---)
+            markdown = markdown.replace(/^---[\s\S]*?---\n*/m, '');
+
+            // Добавляем картинку + парсим markdown
+            const imageHtml = `<img src="logs/articles/article1/article1.jpg" alt="Article cover" class="article-image">`;
+            articleContent.innerHTML = imageHtml + marked.parse(markdown);
         } catch (error) {
             articleContent.innerHTML = `
                 <p style="color: #ff4444; text-align: center;">
