@@ -11,13 +11,16 @@
 </head>
 
 <body>
-    <div class="bento-container">
-        <div class="tile bio" data-tilt>
-            <h1>NA8US EXPANSION</h1>
-            <p>ИИ-интеграция и автоматизация процессов. Новая эра цифрового превосходства.</p>
+    <div class="bento-grid">
+        <div class="tile bio" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare
+            data-tilt-max-glare="0.5">
+            <div class="content">
+                <h1>NA8US EXPANSION</h1>
+                <p>ИИ-интеграция и автоматизация процессов. Новая эра цифрового превосходства.</p>
+            </div>
         </div>
 
-        <div class="tile socials" data-tilt>
+        <div class="tile socials" data-tilt data-tilt-max="15">
             <div class="social-icons">
                 <a href="https://www.instagram.com/mr.sheleg/" target="_blank"><i class="fab fa-instagram"></i></a>
                 <a href="https://t.me/nabus_blog/10" target="_blank"><i class="fab fa-telegram"></i></a>
@@ -28,21 +31,21 @@
             </div>
         </div>
 
-        <div class="tile article" data-tilt onclick="openArticle()">
-            <div class="article-bg" style="background-image: url('logs/articles/article1/article1.jpg');"></div>
-            <div class="article-content">
-                <span>ПОСЛЕДНЯЯ СТАТЬЯ</span>
-                <h2>Твой клиент больше не человек...</h2>
+        <div class="tile article" data-tilt data-tilt-max="5" onclick="openArticle()">
+            <div class="article-overlay">
+                <p class="tag">ПОСЛЕДНЯЯ СТАТЬЯ</p>
+                <h2>Твой клиент больше не человек: как Google UCP рождает B2A</h2>
             </div>
         </div>
     </div>
 
     <div id="modal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div id="article-body"></div>
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div id="article-data"></div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 
