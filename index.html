@@ -4,65 +4,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NA8US EXPANSION</title>
+    <title>NABUS EXPANSION | Neural Hub</title>
 
     <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap"
+        rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 
 <body>
 
-    <div class="bento-container">
+    <div class="main-wrapper">
+        <div class="bento-grid">
 
-        <section class="bento-item bio-block" data-tilt>
-            <div class="content">
-                <h1 class="logo-text">NA8US<br>EXPANSION</h1>
-                <p class="description">
-                    ИИ-интеграция и автоматизация процессов.<br>
-                    Новая эра цифрового превосходства.
-                </p>
-            </div>
-        </section>
+            <section class="card identity-card" data-tilt data-tilt-max="5">
+                <div class="card-content">
+                    <div class="status-indicator">
+                        <span class="blink">●</span> SYSTEM ONLINE
+                    </div>
+                    <h1 class="brand-logo">NABUS<br>EXPANSION</h1>
+                    <p class="mission-text">
+                        Архитектура цифрового превосходства.<br>
+                        Мы строим будущее, пока другие спят.
+                    </p>
+                </div>
+            </section>
 
-        <section class="bento-item article-block" data-tilt>
-            <div class="article-overlay">
-                <span class="category-tag">ПОСЛЕДНЯЯ СТАТЬЯ</span>
-                <h2 class="article-title">Твой клиент больше не человек...</h2>
-                <button class="btn-open" onclick="openModal()">ЧИТАТЬ ПОЛНОСТЬЮ</button>
-            </div>
-        </section>
+            <section class="card services-card" data-tilt data-tilt-max="3">
+                <div class="card-header">
+                    <h2>МАТРИЦА УСЛУГ</h2>
+                    <div class="line-deco"></div>
+                </div>
+                <ul class="service-list">
+                    <li class="service-item" onclick="openService('assist')">
+                        <span class="code">01</span>
+                        <span class="name">СИНТЕЗ ЦИФРОВЫХ ЛИЧНОСТЕЙ</span>
+                        <span class="arrow">➞</span>
+                    </li>
+                    <li class="service-item" onclick="openService('geo')">
+                        <span class="code">02</span>
+                        <span class="name">GEO-ЭКСПАНСИЯ & ТРАФИК</span>
+                        <span class="arrow">➞</span>
+                    </li>
+                    <li class="service-item" onclick="openService('bots')">
+                        <span class="code">03</span>
+                        <span class="name">АВТОНОМНЫЕ НЕЙРО-ПРОТОКОЛЫ</span>
+                        <span class="arrow">➞</span>
+                    </li>
+                    <li class="service-item" onclick="openService('biz')">
+                        <span class="code">04</span>
+                        <span class="name">АРХИТЕКТУРА БИЗНЕС-ЯДРА</span>
+                        <span class="arrow">➞</span>
+                    </li>
+                </ul>
+            </section>
 
-        <footer class="bento-item social-block" data-tilt data-tilt-max="5">
-            <div class="social-grid">
-                <a href="#" class="social-link"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"
-                        alt="Insta"></a>
-                <a href="#" class="social-link"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"
-                        alt="TG"></a>
-                <a href="#" class="social-link"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"
-                        alt="YT"></a>
-                <a href="#" class="social-link"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png"
-                        alt="TT"></a>
-                <a href="#" class="social-link"><img src="https://cdn-icons-png.flaticon.com/512/145/145807.png"
-                        alt="In"></a>
-                <a href="#" class="social-link"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
-                        alt="GH"></a>
-            </div>
-        </footer>
+            <section class="card article-card" data-tilt onclick="openLatestArticle()">
+                <div class="glitch-overlay"></div>
+                <div class="article-info">
+                    <span class="tag">БАЗА ЗНАНИЙ (LOGS)</span>
+                    <h3>Твой клиент больше не человек...</h3>
+                    <button class="btn-read">INITIATE_READING</button>
+                </div>
+            </section>
 
+            <section class="card chat-card" data-tilt data-tilt-max="2">
+                <div class="chat-interface">
+                    <div class="chat-header">
+                        <span class="icon">🤖</span> AI_ASSISTANT v1.0
+                    </div>
+                    <div class="chat-body" id="chat-display">
+                        <div class="msg bot">
+                            Приветствую, Создатель. <br>Системы NABUS готовы к работе.
+                        </div>
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" placeholder="Введите команду..." id="user-input">
+                        <button class="send-btn">↵</button>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="card social-bar" data-tilt data-tilt-axis="y">
+                <div class="social-links">
+                    <a href="https://www.instagram.com/mr.sheleg/" target="_blank" title="Instagram">IG</a>
+                    <a href="https://t.me/nabus_blog/10" target="_blank" title="Telegram">TG</a>
+                    <a href="https://www.youtube.com/@nabus_Expansion" target="_blank" title="YouTube">YT</a>
+                    <a href="https://www.tiktok.com/@n_a_b_u_s" target="_blank" title="TikTok">TT</a>
+                    <a href="https://www.linkedin.com/in/esheleh/" target="_blank" title="LinkedIn">IN</a>
+                    <a href="https://github.com/Nabusardar" target="_blank" title="GitHub">GH</a>
+                </div>
+            </footer>
+
+        </div>
     </div>
 
-    <div id="modal" class="modal-overlay">
+    <div id="modal-overlay" class="modal-overlay">
         <div class="modal-window">
-            <button class="btn-close" onclick="closeModal()">×</button>
-            <div id="article-content" class="markdown-body">
-                Загрузка...
+            <button class="close-btn" onclick="closeModal()">✕</button>
+            <div id="modal-content" class="modal-body">
             </div>
         </div>
     </div>
 
     <script src="script.js"></script>
-
 </body>
 
 </html>
