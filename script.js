@@ -1,68 +1,51 @@
-let articleLoaded = false;
+/* СКРИПТЫ NA8US SYSTEM */
 
-function openModal() {
-    document.getElementById('articleModal').classList.add('active');
-    document.body.style.overflow = 'hidden';
-
-    if (!articleLoaded) {
-        fetchArticle();
+// 1. Запуск параллакса (движение плиток за мышью)
+document.addEventListener('DOMContentLoaded', () => {
+    // Проверяем, загрузилась ли библиотека
+    if (typeof VanillaTilt !== 'undefined') {
+        VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+            max: 5,             // Максимальный наклон (меньше = строже)
+            speed: 400,         // Плавность
+            glare: true,        // Блик
+            "max-glare": 0.1,   // Сила блика
+            scale: 1.01         // Легкое увеличение
+        });
     }
-}
+});
 
-function closeModal() {
-    document.getElementById('articleModal').classList.remove('active');
-    document.body.style.overflow = 'auto';
-}
+// 2. Управление открытием статьи
+const modal = document.getElementById('modal');
+const articleContent = document.getElementById('article-content');
 
-function fetchArticle() {
-    const path = 'logs/articles/article1/article1.md';
-    fetch(path)
+// Функция открытия окна
+function openModal() {
+    modal.style.display = 'flex';
+    articleContent.innerText = 'Загрузка данных...';
+
+    // Загружаем файл по твоей структуре
+    fetch('logs/articles/article1/article1.md')
         .then(response => {
-            if (!response.ok) throw new Error('Article not found (404)');
-            return response.text();
+            if (response.ok) return response.text();
+            throw new Error('Файл статьи не найден');
         })
         .then(text => {
-            const html = parseMarkdown(text);
-            document.getElementById('modal-content').innerHTML = html;
-            articleLoaded = true;
+            articleContent.innerText = text;
         })
-        .catch(err => {
-            console.error(err);
-            document.getElementById('modal-content').innerHTML = `<p style="color:red; text-align:center;">Ошибка загрузки статьи: ${err.message}<br>Проверьте путь: ${path}</p>`;
+        .catch(error => {
+            console.error(error);
+            articleContent.innerText = 'Ошибка: Не удалось найти файл статьи.\nПроверь путь: logs/articles/article1/article1.md';
         });
 }
 
-function parseMarkdown(text) {
-    // Remove Frontmatter
-    let html = text.replace(/^---[\s\S]*?---/, '');
-
-    // Inject Cover Image
-    const coverImg = '<img src="logs/articles/article1/article1.jpg" alt="Cover">';
-
-    // Headers
-    html = html.replace(/^# (.*$)/gm, '<h1>$1</h1>');
-    html = html.replace(/^## (.*$)/gm, '<h2>$1</h2>');
-    html = html.replace(/^### (.*$)/gm, '<h3>$1</h3>');
-
-    // Bold & Italic
-    html = html.replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>');
-    html = html.replace(/\*(.*)\*/gim, '<em>$1</em>');
-
-    // Lists
-    html = html.replace(/^\d\.\s+(.*)$/gm, '<li>$1</li>');
-    html = html.replace(/^\s*[\-\*]\s+(.*)$/gm, '<li>$1</li>');
-
-    // Paragraphs
-    html = html.split(/\n\n/).map(p => {
-        if (p.trim().match(/^<(h|li)/)) return p;
-        return `<p>${p.replace(/\n/g, '<br>')}</p>`;
-    }).join('');
-
-    return coverImg + html;
+// Функция закрытия окна
+function closeModal() {
+    modal.style.display = 'none';
 }
 
-// Close on outside click
-window.onclick = function (e) {
-    const modal = document.getElementById('articleModal');
-    if (e.target === modal) closeModal();
+// Закрытие при клике мимо окна
+window.onclick = function (event) {
+    if (event.target == modal) {
+        closeModal();
+    }
 }

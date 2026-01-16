@@ -5,62 +5,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NA8US EXPANSION</title>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;500;700&display=swap"
-        rel="stylesheet">
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 </head>
 
 <body>
-    <div class="bento-grid">
-        <!-- Bio Unit (Large Left) -->
-        <div class="card bio" data-tilt data-tilt-max="3" data-tilt-speed="400" data-tilt-glare
-            data-tilt-max-glare="0.1">
-            <div class="bio-content">
-                <h1>NA8US<br>EXPANSION</h1>
-                <p>ИИ-интеграция и автоматизация процессов. Новая эра цифрового превосходства.</p>
-            </div>
-        </div>
 
-        <!-- Article Unit (Large Right) -->
-        <div class="card article" onclick="openModal()" data-tilt data-tilt-max="3" data-tilt-speed="400"
-            data-tilt-glare data-tilt-max-glare="0.2">
-            <div class="article-bg"></div>
-            <div class="article-content">
-                <span class="tag">ПОСЛЕДНЯЯ СТАТЬЯ</span>
-                <h2>Твой клиент больше не человек...</h2>
-            </div>
-        </div>
+    <div class="bento-container">
 
-        <!-- Socials Unit (Bottom Row) -->
-        <div class="card socials" data-tilt data-tilt-max="2" data-tilt-speed="400">
-            <a href="https://www.instagram.com/mr.sheleg/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://t.me/nabus_blog/10" target="_blank"><i class="fa-brands fa-telegram"></i></a>
-            <a href="https://www.youtube.com/@nabus_Expansion" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-            <a href="https://www.tiktok.com/@n_a_b_u_s" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="https://www.linkedin.com/in/esheleh/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://github.com/Nabusardar" target="_blank"><i class="fa-brands fa-github"></i></a>
-        </div>
+        <section class="bento-item bio-block" data-tilt>
+            <div class="content">
+                <h1 class="logo-text">NA8US<br>EXPANSION</h1>
+                <p class="description">
+                    ИИ-интеграция и автоматизация процессов.<br>
+                    Новая эра цифрового превосходства.
+                </p>
+            </div>
+        </section>
+
+        <section class="bento-item article-block" data-tilt>
+            <div class="article-overlay">
+                <span class="category-tag">ПОСЛЕДНЯЯ СТАТЬЯ</span>
+                <h2 class="article-title">Твой клиент больше не человек...</h2>
+                <button class="btn-open" onclick="openModal()">ЧИТАТЬ ПОЛНОСТЬЮ</button>
+            </div>
+        </section>
+
+        <footer class="bento-item social-block" data-tilt data-tilt-max="5">
+            <div class="social-grid">
+                <a href="#" class="social-link"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"
+                        alt="Insta"></a>
+                <a href="#" class="social-link"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"
+                        alt="TG"></a>
+                <a href="#" class="social-link"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"
+                        alt="YT"></a>
+                <a href="#" class="social-link"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png"
+                        alt="TT"></a>
+                <a href="#" class="social-link"><img src="https://cdn-icons-png.flaticon.com/512/145/145807.png"
+                        alt="In"></a>
+                <a href="#" class="social-link"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
+                        alt="GH"></a>
+            </div>
+        </footer>
+
     </div>
 
-    <!-- Modal -->
-    <div id="articleModal" class="modal">
-        <div class="modal-backdrop" onclick="closeModal()"></div>
+    <div id="modal" class="modal-overlay">
         <div class="modal-window">
-            <button class="close-btn" onclick="closeModal()">×</button>
-            <div class="modal-body" id="modal-content">
-                <div class="loading-spinner">Загрузка...</div>
+            <button class="btn-close" onclick="closeModal()">×</button>
+            <div id="article-content" class="markdown-body">
+                Загрузка...
             </div>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
     <script src="script.js"></script>
+
 </body>
 
 </html>
