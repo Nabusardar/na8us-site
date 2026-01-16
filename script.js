@@ -23,12 +23,12 @@ function fetchArticle() {
         })
         .then(text => {
             const html = parseMarkdown(text);
-            document.getElementById('modal-body').innerHTML = html;
+            document.getElementById('modal-content').innerHTML = html;
             articleLoaded = true;
         })
         .catch(err => {
             console.error(err);
-            document.getElementById('modal-body').innerHTML = `<p style="color:red; text-align:center;">Ошибка загрузки статьи: ${err.message}<br>Проверьте путь: ${path}</p>`;
+            document.getElementById('modal-content').innerHTML = `<p style="color:red; text-align:center;">Ошибка загрузки статьи: ${err.message}<br>Проверьте путь: ${path}</p>`;
         });
 }
 
@@ -39,7 +39,7 @@ function parseMarkdown(text) {
     // Inject Cover Image
     const coverImg = '<img src="logs/articles/article1/article1.jpg" alt="Cover">';
 
-    // Headers (H1-H3)
+    // Headers
     html = html.replace(/^# (.*$)/gm, '<h1>$1</h1>');
     html = html.replace(/^## (.*$)/gm, '<h2>$1</h2>');
     html = html.replace(/^### (.*$)/gm, '<h3>$1</h3>');

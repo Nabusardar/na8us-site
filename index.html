@@ -13,22 +13,23 @@
         rel="stylesheet">
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <div class="bento-grid">
-        <!-- Bio Unit -->
-        <div class="tile bio" data-tilt data-tilt-max="5" data-tilt-glare data-tilt-max-glare="0.2">
+        <!-- Bio Unit (Large Left) -->
+        <div class="card bio" data-tilt data-tilt-max="3" data-tilt-speed="400" data-tilt-glare
+            data-tilt-max-glare="0.1">
             <div class="bio-content">
                 <h1>NA8US<br>EXPANSION</h1>
                 <p>ИИ-интеграция и автоматизация процессов. Новая эра цифрового превосходства.</p>
             </div>
         </div>
 
-        <!-- Article Unit -->
-        <div class="tile article" onclick="openModal()" data-tilt data-tilt-max="5" data-tilt-glare
-            data-tilt-max-glare="0.3">
+        <!-- Article Unit (Large Right) -->
+        <div class="card article" onclick="openModal()" data-tilt data-tilt-max="3" data-tilt-speed="400"
+            data-tilt-glare data-tilt-max-glare="0.2">
             <div class="article-bg"></div>
             <div class="article-content">
                 <span class="tag">ПОСЛЕДНЯЯ СТАТЬЯ</span>
@@ -36,8 +37,8 @@
             </div>
         </div>
 
-        <!-- Socials Unit -->
-        <div class="tile socials" data-tilt data-tilt-max="5">
+        <!-- Socials Unit (Bottom Row) -->
+        <div class="card socials" data-tilt data-tilt-max="2" data-tilt-speed="400">
             <a href="https://www.instagram.com/mr.sheleg/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
             <a href="https://t.me/nabus_blog/10" target="_blank"><i class="fa-brands fa-telegram"></i></a>
             <a href="https://www.youtube.com/@nabus_Expansion" target="_blank"><i class="fa-brands fa-youtube"></i></a>
@@ -49,9 +50,12 @@
 
     <!-- Modal -->
     <div id="articleModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">×</span>
-            <div id="modal-body">Загрузка...</div>
+        <div class="modal-backdrop" onclick="closeModal()"></div>
+        <div class="modal-window">
+            <button class="close-btn" onclick="closeModal()">×</button>
+            <div class="modal-body" id="modal-content">
+                <div class="loading-spinner">Загрузка...</div>
+            </div>
         </div>
     </div>
 
