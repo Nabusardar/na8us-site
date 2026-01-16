@@ -1,24 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Tilt Effect
-    const cards = document.querySelectorAll('.unit');
+    // Parallax Floating Effect
+    document.addEventListener('mousemove', (e) => {
+        const units = document.querySelectorAll('.unit');
+        const x = (window.innerWidth - e.pageX * 2) / 100;
+        const y = (window.innerHeight - e.pageY * 2) / 100;
 
-    cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-
-            const rotateX = ((y - centerY) / centerY) * -4; // Max rotation deg
-            const rotateY = ((x - centerX) / centerX) * 4;
-
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+        units.forEach(unit => {
+            const speed = unit.getAttribute('data-speed') || 1;
+            unit.style.transform = `translateX(${x * speed}px) translateY(${y * speed}px)`;
         });
     });
 });

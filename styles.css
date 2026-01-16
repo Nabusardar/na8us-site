@@ -36,24 +36,26 @@ body {
 }
 
 .unit {
-    background-color: var(--card-bg);
-    border: 1px solid #333;
+    background-color: rgba(21, 21, 30, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 243, 255, 0.3);
     border-radius: 16px;
     padding: 24px;
     position: relative;
     overflow: hidden;
-    transition: transform 0.1s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.1s ease-out, border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transform-style: preserve-3d;
-    perspective: 1000px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .unit:hover {
     border-color: var(--neon-border);
     box-shadow: 0 0 15px rgba(0, 243, 255, 0.1);
-    z-index: 10;
+    background-color: rgba(21, 21, 30, 0.9);
+    z-index: 5;
 }
 
 /* Sizes */
