@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap"
         rel="stylesheet">
 
     <!-- AOS Animation Library -->
@@ -26,23 +26,44 @@
     <!-- ===== HERO СЕКЦИЯ ===== -->
     <section class="section section-hero">
         <div class="hero-bg"></div>
+        <div class="hero-grid"></div>
         <div class="container">
             <div class="hero-content">
-                <div class="status-indicator" data-aos="fade-down" data-aos-delay="0">
-                    <span class="status-dot"></span>
-                    <span class="status-text">SYSTEM ONLINE</span>
+                <div class="terminal-window" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="terminal-header">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">nabus_core.exe</span>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="terminal-line">
+                            <span class="terminal-prompt">STATUS:</span>
+                            <span class="terminal-status">SYSTEM ONLINE</span>
+                            <span class="status-dot"></span>
+                        </div>
+                        <div class="terminal-line main-line" data-aos="fade-up" data-aos-delay="300">
+                            <span class="terminal-prompt">&gt;</span>
+                            <span class="typed-text" id="typedText1">ВАШ БИЗНЕС — ЭТО ЖЕЛЕЗО</span>
+                            <span class="cursor">_</span>
+                        </div>
+                        <div class="terminal-line main-line" data-aos="fade-up" data-aos-delay="600">
+                            <span class="terminal-prompt">&gt;</span>
+                            <span class="typed-text accent" id="typedText2">МЫ — ОПЕРАЦИОННАЯ СИСТЕМА</span>
+                            <span class="cursor">_</span>
+                        </div>
+                        <div class="terminal-line sub-line" data-aos="fade-up" data-aos-delay="900">
+                            <span class="terminal-output">Внедряем ИИ туда, где раньше справлялись только люди.</span>
+                        </div>
+                    </div>
                 </div>
-                <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">
-                    NABUS<span class="accent">EXPANSION</span>
-                </h1>
-                <p class="hero-mission" data-aos="fade-up" data-aos-delay="400">
-                    Ваш бизнес — это железо. Мы — операционная система.
-                    Внедряем ИИ туда, где раньше справлялись только люди.
-                </p>
-                <div class="hero-tagline" data-aos="fade-up" data-aos-delay="600">
-                    Архитектура цифрового превосходства
+
+                <div class="hero-brand" data-aos="fade-up" data-aos-delay="1100">
+                    <h1 class="brand-name">NABUS<span class="accent">EXPANSION</span></h1>
+                    <div class="brand-tagline">[ АРХИТЕКТУРА ЦИФРОВОГО ПРЕВОСХОДСТВА ]</div>
                 </div>
-                <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="800">
+
+                <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="1300">
                     <span>SCROLL</span>
                     <div class="scroll-line"></div>
                 </div>
@@ -53,7 +74,10 @@
     <!-- ===== SERVICES СЕКЦИЯ ===== -->
     <section class="section section-services">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-right">SERVICE_MATRIX</h2>
+            <div class="section-header" data-aos="fade-right">
+                <h2 class="section-title">SERVICE_MATRIX</h2>
+                <span class="section-subtitle">[ наши протоколы ]</span>
+            </div>
             <div class="services-grid">
                 <div class="service-card" data-aos="fade-up" data-aos-delay="0" data-service="1">
                     <span class="service-number">01</span>
@@ -87,21 +111,101 @@
         </div>
     </section>
 
+    <!-- ===== DEPLOYMENT LOG СЕКЦИЯ ===== -->
+    <section class="section section-deployments">
+        <div class="container">
+            <div class="section-header" data-aos="fade-right">
+                <h2 class="section-title">DEPLOYMENT_LOG</h2>
+                <span class="section-subtitle">[ боевые операции ]</span>
+            </div>
+            <div class="deployments-grid">
+                <div class="deployment-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="deployment-header">
+                        <span class="deployment-id">#001 // NEOSUSHI</span>
+                        <span class="deployment-status status-progress">IN PROGRESS</span>
+                    </div>
+                    <div class="deployment-body">
+                        <h3 class="deployment-client">NEO SUSHI</h3>
+                        <div class="deployment-meta">
+                            <span class="meta-item">📍 Минск, Беларусь</span>
+                            <span class="meta-item">🍣 Сеть доставки • 4 точки</span>
+                        </div>
+                        <p class="deployment-desc">
+                            Развёртывание автономного нейро-оператора для перехвата клиентского потока.
+                            Цифровой агент закрывает 70% входящих запросов: навигация по меню, консультации,
+                            статус заказа. Режим работы: 24/7/365.
+                        </p>
+                        <div class="deployment-metrics">
+                            <div class="metric">
+                                <span class="metric-value">250+</span>
+                                <span class="metric-label">заказов/день</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">70%</span>
+                                <span class="metric-label">автоматизация</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">24/7</span>
+                                <span class="metric-label">аптайм</span>
+                            </div>
+                        </div>
+                        <div class="deployment-phase">
+                            <span class="phase-label">CURRENT PHASE:</span>
+                            <span class="phase-value">Вариант 1 → AI-консультант на сайт</span>
+                        </div>
+                    </div>
+                    <div class="deployment-glow"></div>
+                </div>
+
+                <!-- Placeholder для будущих кейсов -->
+                <div class="deployment-card deployment-placeholder" data-aos="fade-up" data-aos-delay="250">
+                    <div class="placeholder-content">
+                        <span class="placeholder-icon">+</span>
+                        <span class="placeholder-text">NEXT OPERATION</span>
+                        <span class="placeholder-hint">Ваш проект может быть здесь</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ===== LOGS СЕКЦИЯ ===== -->
     <section class="section section-logs">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-right">LOGS_ENGINE</h2>
-            <div class="logs-card" data-aos="zoom-in" data-aos-delay="200" id="logsCard">
-                <div class="logs-image">
-                    <img src="logs/articles/article1/article1.jpg" alt="Article">
-                    <div class="logs-overlay"></div>
+            <div class="section-header" data-aos="fade-right">
+                <h2 class="section-title">LOGS_ENGINE</h2>
+                <span class="section-subtitle">[ база знаний ]</span>
+            </div>
+            <div class="logs-grid">
+                <!-- Статья 1 -->
+                <div class="logs-card" data-aos="fade-up" data-aos-delay="100" data-article="1">
+                    <div class="logs-image">
+                        <img src="logs/articles/article1/article1.jpg" alt="Article 1">
+                        <div class="logs-overlay"></div>
+                    </div>
+                    <div class="logs-content">
+                        <span class="logs-tag">AI AGENTS • UCP • B2A</span>
+                        <h3 class="logs-title">Твой клиент больше не человек</h3>
+                        <p class="logs-excerpt">Как Google UCP убивает классический e-com и рождает B2A</p>
+                        <span class="logs-cta">Читать →</span>
+                    </div>
+                    <div class="glitch-overlay"></div>
                 </div>
-                <div class="logs-content">
-                    <span class="logs-tag" data-aos="fade-left" data-aos-delay="400">БАЗА ЗНАНИЙ // LOGS</span>
-                    <h3 class="logs-title" data-aos="fade-up" data-aos-delay="500">Твой клиент больше не человек...</h3>
-                    <span class="logs-cta" data-aos="fade-up" data-aos-delay="600">Читать статью →</span>
+
+                <!-- Статья 2 -->
+                <div class="logs-card" data-aos="fade-up" data-aos-delay="250" data-article="2">
+                    <div class="logs-image">
+                        <img src="logs/articles/article2/article2.jpg" alt="Article 2">
+                        <div class="logs-overlay"></div>
+                    </div>
+                    <div class="logs-content">
+                        <span class="logs-tag">BIOTECH • AI AUTOMATION • FUTURE</span>
+                        <h3 class="logs-title">Манифест нового Биотеха</h3>
+                        <p class="logs-excerpt">Как слияние AI и биологии убивает старый бизнес</p>
+                        <span class="logs-cta">Читать →</span>
+                    </div>
+                    <div class="glitch-overlay"></div>
                 </div>
-                <div class="glitch-overlay"></div>
             </div>
         </div>
     </section>
@@ -109,7 +213,10 @@
     <!-- ===== CHAT СЕКЦИЯ ===== -->
     <section class="section section-chat">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-right">NEURAL_LINK</h2>
+            <div class="section-header" data-aos="fade-right">
+                <h2 class="section-title">NEURAL_LINK</h2>
+                <span class="section-subtitle">[ канал связи ]</span>
+            </div>
             <div class="chat-container" data-aos="fade-up" data-aos-delay="200">
                 <div class="chat-window">
                     <div class="chat-header">

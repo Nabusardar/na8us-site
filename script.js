@@ -1,6 +1,6 @@
 /* ========================================
-   NABUS EXPANSION — MAIN SCRIPT v2
-   With AOS Scroll Animations
+   NABUS EXPANSION — MAIN SCRIPT v3
+   Terminal Style + Multiple Articles
    ======================================== */
 
 // === ДАННЫЕ УСЛУГ ===
@@ -27,6 +27,18 @@ const servicesData = {
     }
 };
 
+// === ДАННЫЕ СТАТЕЙ ===
+const articlesData = {
+    1: {
+        path: 'logs/articles/article1/article1.md',
+        image: 'logs/articles/article1/article1.jpg'
+    },
+    2: {
+        path: 'logs/articles/article2/article2.md',
+        image: 'logs/articles/article2/article2.jpg'
+    }
+};
+
 // === ОТВЕТЫ ЧАТА (ЗАГЛУШКА) ===
 const chatResponses = [
     'Интересный запрос. Анализирую данные...',
@@ -34,7 +46,9 @@ const chatResponses = [
     'Запрос принят. Это направление входит в наши компетенции.',
     'Понял. Для обсуждения деталей лучше перейти в Telegram.',
     'Обработка завершена. Рекомендую оставить заявку для персонального ответа.',
-    'Принято. Наши специалисты могут подробнее раскрыть эту тему.'
+    'Принято. Наши специалисты могут подробнее раскрыть эту тему.',
+    'Сканирую базу знаний... Найдено несколько релевантных протоколов.',
+    'Запрос классифицирован. Рекомендую изучить секцию DEPLOYMENT_LOG для примеров.'
 ];
 
 // === ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ ===
@@ -73,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Карточки
     const serviceCards = document.querySelectorAll('.service-card');
-    const logsCard = document.getElementById('logsCard');
+    const logsCards = document.querySelectorAll('.logs-card');
 
     // === УСЛУГИ — ОТКРЫТИЕ МОДАЛКИ ===
     serviceCards.forEach(card => {
@@ -132,32 +146,43 @@ document.addEventListener('DOMContentLoaded', () => {
         closeModal(serviceModal);
     });
 
-    // === СТАТЬЯ — ОТКРЫТИЕ ===
-    logsCard.addEventListener('click', async () => {
-        openModal(articleModal);
-        articleContent.innerHTML = '<p style="color: var(--cyan); text-align: center;">⏳ Загрузка...</p>';
+    // === СТАТЬИ — ОТКРЫТИЕ ===
+    logsCards.forEach(card => {
+        card.addEventListener('click', async () => {
+            const articleId = card.dataset.article;
+            const article = articlesData[articleId];
 
-        try {
-            const response = await fetch('logs/articles/article1/article1.md');
-            if (!response.ok) throw new Error('Файл не найден');
+            if (!article) return;
 
-            let markdown = await response.text();
+            openModal(articleModal);
+            articleContent.innerHTML = '<p style="color: var(--cyan); text-align: center;">⏳ Загрузка...</p>';
 
-            // Убираем YAML frontmatter (--- ... ---)
-            markdown = markdown.replace(/^---[\s\S]*?---\n*/m, '');
+            try {
+                const response = await fetch(article.path);
+                if (!response.ok) throw new Error('Файл не найден');
 
-            // Добавляем картинку + парсим markdown
-            const imageHtml = `<img src="logs/articles/article1/article1.jpg" alt="Article cover" class="article-image">`;
-            articleContent.innerHTML = imageHtml + marked.parse(markdown);
-        } catch (error) {
-            articleContent.innerHTML = `
-                <p style="color: #ff4444; text-align: center;">
-                    ❌ Ошибка загрузки статьи.<br>
-                    <small style="color: var(--text-dim);">${error.message}</small>
-                </p>
-            `;
-            console.error('Ошибка загрузки статьи:', error);
-        }
+                let markdown = await response.text();
+
+                // Убираем YAML frontmatter (--- ... ---)
+                markdown = markdown.replace(/^---[\s\S]*?---\n*/m, '');
+
+                // Парсим markdown
+                const parsedHtml = marked.parse(markdown);
+
+                // Добавляем картинку + контент
+                const imageHtml = `<img src="${article.image}" alt="Article cover" class="article-image">`;
+                articleContent.innerHTML = imageHtml + parsedHtml;
+
+            } catch (error) {
+                articleContent.innerHTML = `
+                    <p style="color: #ff4444; text-align: center;">
+                        ❌ Ошибка загрузки статьи.<br>
+                        <small style="color: var(--text-dim);">${error.message}</small>
+                    </p>
+                `;
+                console.error('Ошибка загрузки статьи:', error);
+            }
+        });
     });
 
     // === СТАТЬЯ — ЗАКРЫТИЕ ===
@@ -228,18 +253,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // === ПАРАЛЛАКС ЭФФЕКТ НА HERO ===
+    // === ПАРАЛЛАКС НА HERO ===
     const heroBg = document.querySelector('.hero-bg');
+    const heroGrid = document.querySelector('.hero-grid');
 
     if (heroBg) {
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
-            heroBg.style.transform = `translateY(${scrolled * 0.5}px)`;
+            heroBg.style.transform = `translateY(${scrolled * 0.3}px)`;
+            if (heroGrid) {
+                heroGrid.style.opacity = Math.max(0, 1 - scrolled / 500);
+            }
         });
     }
 
-    // === ПЛАВНОЕ ПОЯВЛЕНИЕ ПРИ ЗАГРУЗКЕ ===
-    document.body.classList.add('loaded');
+    // === TYPING EFFECT (опционально) ===
+    // Можно добавить анимацию печатания для терминала
 
-    console.log('🚀 NABUS EXPANSION initialized');
+    console.log('🚀 NABUS EXPANSION v3 initialized');
+    console.log('📡 Systems online. Ready for deployment.');
 });
