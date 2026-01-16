@@ -5,47 +5,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NA8US EXPANSION</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
 </head>
 
 <body>
     <div class="bento-grid">
-        <div class="tile bio" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare
-            data-tilt-max-glare="0.5">
-            <div class="content">
-                <h1>NA8US EXPANSION</h1>
+        <!-- Bio Unit -->
+        <div class="tile bio" data-tilt data-tilt-max="5" data-tilt-glare data-tilt-max-glare="0.2">
+            <div class="bio-content">
+                <h1>NA8US<br>EXPANSION</h1>
                 <p>ИИ-интеграция и автоматизация процессов. Новая эра цифрового превосходства.</p>
             </div>
         </div>
 
-        <div class="tile socials" data-tilt data-tilt-max="15">
-            <div class="social-icons">
-                <a href="https://www.instagram.com/mr.sheleg/" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://t.me/nabus_blog/10" target="_blank"><i class="fab fa-telegram"></i></a>
-                <a href="https://www.youtube.com/@nabus_Expansion" target="_blank"><i class="fab fa-youtube"></i></a>
-                <a href="https://www.tiktok.com/@n_a_b_u_s" target="_blank"><i class="fab fa-tiktok"></i></a>
-                <a href="https://www.linkedin.com/in/esheleh/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/Nabusardar" target="_blank"><i class="fab fa-github"></i></a>
+        <!-- Article Unit -->
+        <div class="tile article" onclick="openModal()" data-tilt data-tilt-max="5" data-tilt-glare
+            data-tilt-max-glare="0.3">
+            <div class="article-bg"></div>
+            <div class="article-content">
+                <span class="tag">ПОСЛЕДНЯЯ СТАТЬЯ</span>
+                <h2>Твой клиент больше не человек...</h2>
             </div>
         </div>
 
-        <div class="tile article" data-tilt data-tilt-max="5" onclick="openArticle()">
-            <div class="article-overlay">
-                <p class="tag">ПОСЛЕДНЯЯ СТАТЬЯ</p>
-                <h2>Твой клиент больше не человек: как Google UCP рождает B2A</h2>
-            </div>
+        <!-- Socials Unit -->
+        <div class="tile socials" data-tilt data-tilt-max="5">
+            <a href="https://www.instagram.com/mr.sheleg/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://t.me/nabus_blog/10" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+            <a href="https://www.youtube.com/@nabus_Expansion" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.tiktok.com/@n_a_b_u_s" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.linkedin.com/in/esheleh/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/Nabusardar" target="_blank"><i class="fa-brands fa-github"></i></a>
         </div>
     </div>
 
-    <div id="modal" class="modal">
+    <!-- Modal -->
+    <div id="articleModal" class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <div id="article-data"></div>
+            <span class="close-btn" onclick="closeModal()">×</span>
+            <div id="modal-body">Загрузка...</div>
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
     <script src="script.js"></script>
 </body>
 

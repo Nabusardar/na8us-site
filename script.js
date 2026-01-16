@@ -23,47 +23,46 @@ function fetchArticle() {
         })
         .then(text => {
             const html = parseMarkdown(text);
-            document.getElementById('modal-content').innerHTML = html;
+            document.getElementById('modal-body').innerHTML = html;
             articleLoaded = true;
         })
         .catch(err => {
             console.error(err);
-            document.getElementById('modal-content').innerHTML = `<p style="color:red; text-align:center;">Ошибка загрузки статьи: ${err.message}<br>Проверьте путь: ${path}</p>`;
+            document.getElementById('modal-body').innerHTML = `<p style="color:red; text-align:center;">Ошибка загрузки статьи: ${err.message}<br>Проверьте путь: ${path}</p>`;
         });
 }
 
 function parseMarkdown(text) {
-    // Simple Markdown Parser
-    let html = text;
+    // Remove Frontmatter
+    let html = text.replace(/^---[\s\S]*?---/, '');
 
-    // Remove Frontmatter (between ---)
-    html = html.replace(/^---[\s\S]*?---/, '');
+    // Inject Cover Image
+    const coverImg = '<img src="logs/articles/article1/article1.jpg" alt="Cover">';
 
-    // Image (Assuming the image path in MD is relative, we might need to fix it or use the one from HTML)
-    // We will inject the main cover image manually first
-    const coverImg = '<img src="logs/articles/article1/article1.jpg" alt="Cover" class="modal-cover">';
-
-    // Headers
+    // Headers (H1-H3)
     html = html.replace(/^# (.*$)/gm, '<h1>$1</h1>');
     html = html.replace(/^## (.*$)/gm, '<h2>$1</h2>');
     html = html.replace(/^### (.*$)/gm, '<h3>$1</h3>');
 
-    // Bold
+    // Bold & Italic
     html = html.replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>');
-
-    // Italic
     html = html.replace(/\*(.*)\*/gim, '<em>$1</em>');
 
     // Lists
     html = html.replace(/^\d\.\s+(.*)$/gm, '<li>$1</li>');
-    // Wrap lis in ol (simple hack, assumes contiguous lists)
-    // For this specific article structure, we can just wrap the whole thing in paragraphs
+    html = html.replace(/^\s*[\-\*]\s+(.*)$/gm, '<li>$1</li>');
 
-    // Paragraphs (double newline)
+    // Paragraphs
     html = html.split(/\n\n/).map(p => {
-        if (p.trim().startsWith('<h') || p.trim().startsWith('<li')) return p;
+        if (p.trim().match(/^<(h|li)/)) return p;
         return `<p>${p.replace(/\n/g, '<br>')}</p>`;
     }).join('');
 
     return coverImg + html;
+}
+
+// Close on outside click
+window.onclick = function (e) {
+    const modal = document.getElementById('articleModal');
+    if (e.target === modal) closeModal();
 }
