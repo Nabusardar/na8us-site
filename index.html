@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NABUS EXPANSION — Архитектура цифрового превосходства</title>
-    <meta name="description"
-        content="AI-решения для бизнеса: чат-боты, автоматизация, GEO-продвижение, интеграция искусственного интеллекта">
+    <meta name="description" content="AI-решения для бизнеса: чат-боты, автоматизация, GEO-продвижение">
 
     <!-- Шрифты -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,123 +14,185 @@
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <!-- Стили -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- ===== ОСНОВНОЙ КОНТЕЙНЕР ===== -->
-    <main class="hub-container">
-
-        <!-- МОДУЛЬ 1: IDENTITY CORE -->
-        <section class="bento-card card-identity" data-tilt>
-            <div class="status-indicator">
-                <span class="status-dot"></span>
-                <span class="status-text">SYSTEM ONLINE</span>
+    <!-- ===== HERO СЕКЦИЯ ===== -->
+    <section class="section section-hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="status-indicator" data-aos="fade-down" data-aos-delay="0">
+                    <span class="status-dot"></span>
+                    <span class="status-text">SYSTEM ONLINE</span>
+                </div>
+                <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">
+                    NABUS<span class="accent">EXPANSION</span>
+                </h1>
+                <p class="hero-mission" data-aos="fade-up" data-aos-delay="400">
+                    Ваш бизнес — это железо. Мы — операционная система.
+                    Внедряем ИИ туда, где раньше справлялись только люди.
+                </p>
+                <div class="hero-tagline" data-aos="fade-up" data-aos-delay="600">
+                    Архитектура цифрового превосходства
+                </div>
+                <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="800">
+                    <span>SCROLL</span>
+                    <div class="scroll-line"></div>
+                </div>
             </div>
-            <h1 class="logo-text">NABUS<span class="logo-accent">EXPANSION</span></h1>
-            <p class="mission-text">Ваш бизнес — это железо. Мы — операционная система. Внедряем ИИ туда, где раньше
-                справлялись только люди.</p>
-            <div class="tagline">Архитектура цифрового превосходства</div>
-        </section>
+        </div>
+    </section>
 
-        <!-- МОДУЛЬ 2: SERVICE MATRIX -->
-        <section class="bento-card card-services">
-            <h2 class="card-title">SERVICE_MATRIX</h2>
+    <!-- ===== SERVICES СЕКЦИЯ ===== -->
+    <section class="section section-services">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-right">SERVICE_MATRIX</h2>
             <div class="services-grid">
-                <div class="service-item" data-service="1">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="0" data-service="1">
                     <span class="service-number">01</span>
-                    <span class="service-name">СИНТЕЗ ЦИФРОВЫХ ЛИЧНОСТЕЙ</span>
+                    <h3 class="service-name">СИНТЕЗ ЦИФРОВЫХ ЛИЧНОСТЕЙ</h3>
+                    <p class="service-desc">AI-ассистенты под ключ</p>
                     <span class="service-tag">AI-ассистенты</span>
+                    <div class="service-glow"></div>
                 </div>
-                <div class="service-item" data-service="2">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="150" data-service="2">
                     <span class="service-number">02</span>
-                    <span class="service-name">GEO-ЭКСПАНСИЯ</span>
+                    <h3 class="service-name">GEO-ЭКСПАНСИЯ</h3>
+                    <p class="service-desc">Видимость в AI-поиске</p>
                     <span class="service-tag">AI-поиск</span>
+                    <div class="service-glow"></div>
                 </div>
-                <div class="service-item" data-service="3">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300" data-service="3">
                     <span class="service-number">03</span>
-                    <span class="service-name">НЕЙРО-АВТОМАТИЗАЦИЯ</span>
+                    <h3 class="service-name">НЕЙРО-АВТОМАТИЗАЦИЯ</h3>
+                    <p class="service-desc">Боты и воркфлоу</p>
                     <span class="service-tag">Боты & Flow</span>
+                    <div class="service-glow"></div>
                 </div>
-                <div class="service-item" data-service="4">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="450" data-service="4">
                     <span class="service-number">04</span>
-                    <span class="service-name">АРХИТЕКТУРА БИЗНЕС-ЯДРА</span>
+                    <h3 class="service-name">АРХИТЕКТУРА БИЗНЕС-ЯДРА</h3>
+                    <p class="service-desc">ИИ внутри компании</p>
                     <span class="service-tag">ИИ-интеграция</span>
+                    <div class="service-glow"></div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- МОДУЛЬ 3: LOGS ENGINE -->
-        <section class="bento-card card-logs" data-tilt>
-            <div class="logs-overlay"></div>
-            <div class="logs-content">
-                <span class="logs-tag">БАЗА ЗНАНИЙ // LOGS</span>
-                <h3 class="logs-title">Твой клиент больше не человек...</h3>
-                <span class="logs-cta">Читать →</span>
+    <!-- ===== LOGS СЕКЦИЯ ===== -->
+    <section class="section section-logs">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-right">LOGS_ENGINE</h2>
+            <div class="logs-card" data-aos="zoom-in" data-aos-delay="200" id="logsCard">
+                <div class="logs-image">
+                    <img src="logs/articles/article1/article1.jpg" alt="Article">
+                    <div class="logs-overlay"></div>
+                </div>
+                <div class="logs-content">
+                    <span class="logs-tag" data-aos="fade-left" data-aos-delay="400">БАЗА ЗНАНИЙ // LOGS</span>
+                    <h3 class="logs-title" data-aos="fade-up" data-aos-delay="500">Твой клиент больше не человек...</h3>
+                    <span class="logs-cta" data-aos="fade-up" data-aos-delay="600">Читать статью →</span>
+                </div>
+                <div class="glitch-overlay"></div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- МОДУЛЬ 4: NEURAL LINK (ЧАТ) -->
-        <section class="bento-card card-chat">
-            <h2 class="card-title">NEURAL_LINK</h2>
-            <div class="chat-window">
-                <div class="chat-messages" id="chatMessages">
-                    <div class="chat-message bot-message">
-                        <span class="message-prefix">[NABUS]:</span>
-                        <span class="message-text">Приветствую, Создатель. Системы NABUS готовы к диалогу. Чем могу
-                            помочь?</span>
+    <!-- ===== CHAT СЕКЦИЯ ===== -->
+    <section class="section section-chat">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-right">NEURAL_LINK</h2>
+            <div class="chat-container" data-aos="fade-up" data-aos-delay="200">
+                <div class="chat-window">
+                    <div class="chat-header">
+                        <span class="chat-status"></span>
+                        <span>NABUS TERMINAL v2.0</span>
+                    </div>
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="chat-message bot-message">
+                            <span class="message-prefix">[NABUS]:</span>
+                            <span class="message-text">Приветствую, Создатель. Системы NABUS готовы к диалогу.</span>
+                        </div>
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" class="chat-input" id="chatInput" placeholder="Введите запрос...">
+                        <button class="chat-send" id="chatSend">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+                            </svg>
+                        </button>
                     </div>
                 </div>
-                <div class="chat-input-area">
-                    <input type="text" class="chat-input" id="chatInput" placeholder="Введите запрос...">
-                    <button class="chat-send" id="chatSend">▶</button>
-                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- МОДУЛЬ 5: NETWORK GRID (СОЦСЕТИ) -->
-        <footer class="bento-card card-social">
-            <a href="https://www.instagram.com/mr.sheleg/" target="_blank" class="social-link" aria-label="Instagram">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                </svg>
-            </a>
-            <a href="https://t.me/nabus_blog/10" target="_blank" class="social-link" aria-label="Telegram">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
-                </svg>
-            </a>
-            <a href="https://www.youtube.com/@nabus_Expansion" target="_blank" class="social-link" aria-label="YouTube">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                </svg>
-            </a>
-            <a href="https://www.tiktok.com/@n_a_b_u_s" target="_blank" class="social-link" aria-label="TikTok">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
-                </svg>
-            </a>
-            <a href="https://www.linkedin.com/in/esheleh/" target="_blank" class="social-link" aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
-            </a>
-            <a href="https://github.com/Nabusardar" target="_blank" class="social-link" aria-label="GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                </svg>
-            </a>
-        </footer>
-
-    </main>
+    <!-- ===== FOOTER СЕКЦИЯ ===== -->
+    <footer class="section section-footer">
+        <div class="container">
+            <div class="social-grid" data-aos="fade-up">
+                <a href="https://www.instagram.com/mr.sheleg/" target="_blank" class="social-link" data-aos="zoom-in"
+                    data-aos-delay="0">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                    </svg>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://t.me/nabus_blog/10" target="_blank" class="social-link" data-aos="zoom-in"
+                    data-aos-delay="100">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                    </svg>
+                    <span>Telegram</span>
+                </a>
+                <a href="https://www.youtube.com/@nabus_Expansion" target="_blank" class="social-link"
+                    data-aos="zoom-in" data-aos-delay="200">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                    </svg>
+                    <span>YouTube</span>
+                </a>
+                <a href="https://www.tiktok.com/@n_a_b_u_s" target="_blank" class="social-link" data-aos="zoom-in"
+                    data-aos-delay="300">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+                    </svg>
+                    <span>TikTok</span>
+                </a>
+                <a href="https://www.linkedin.com/in/esheleh/" target="_blank" class="social-link" data-aos="zoom-in"
+                    data-aos-delay="400">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                    </svg>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://github.com/Nabusardar" target="_blank" class="social-link" data-aos="zoom-in"
+                    data-aos-delay="500">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                    </svg>
+                    <span>GitHub</span>
+                </a>
+            </div>
+            <div class="footer-copy" data-aos="fade-up" data-aos-delay="600">
+                <p>© 2026 NABUS EXPANSION. Архитектура цифрового превосходства.</p>
+            </div>
+        </div>
+    </footer>
 
     <!-- ===== МОДАЛЬНОЕ ОКНО УСЛУГ ===== -->
     <div class="modal-overlay" id="serviceModal">
@@ -170,7 +231,7 @@
     </div>
 
     <!-- Библиотеки -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
 
     <!-- Наш скрипт -->

@@ -1,5 +1,6 @@
 /* ========================================
-   NABUS EXPANSION — MAIN SCRIPT
+   NABUS EXPANSION — MAIN SCRIPT v2
+   With AOS Scroll Animations
    ======================================== */
 
 // === ДАННЫЕ УСЛУГ ===
@@ -29,17 +30,28 @@ const servicesData = {
 // === ОТВЕТЫ ЧАТА (ЗАГЛУШКА) ===
 const chatResponses = [
     'Интересный запрос. Анализирую данные...',
-    'Системы NABUS обрабатывают информацию. Для детального ответа рекомендую связаться с оператором.',
+    'Системы NABUS обрабатывают информацию. Для детального ответа свяжитесь через Telegram.',
     'Запрос принят. Это направление входит в наши компетенции.',
-    'Понял. Для обсуждения деталей лучше перейти в Telegram — там я более функционален.',
-    'Обработка... Рекомендую оставить заявку для персонального ответа.',
+    'Понял. Для обсуждения деталей лучше перейти в Telegram.',
+    'Обработка завершена. Рекомендую оставить заявку для персонального ответа.',
     'Принято. Наши специалисты могут подробнее раскрыть эту тему.'
 ];
 
-// === DOM ЭЛЕМЕНТЫ ===
+// === ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ ===
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Элементы модалки услуг
+    // === ИНИЦИАЛИЗАЦИЯ AOS ===
+    AOS.init({
+        duration: 1000,
+        easing: 'ease-out-cubic',
+        once: false,
+        mirror: true,
+        offset: 100
+    });
+
+    // === DOM ЭЛЕМЕНТЫ ===
+
+    // Модалка услуг
     const serviceModal = document.getElementById('serviceModal');
     const modalClose = document.getElementById('modalClose');
     const modalNumber = document.getElementById('modalNumber');
@@ -49,34 +61,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const showFormBtn = document.getElementById('showFormBtn');
     const requestForm = document.getElementById('requestForm');
 
-    // Элементы модалки статьи
+    // Модалка статьи
     const articleModal = document.getElementById('articleModal');
     const articleClose = document.getElementById('articleClose');
     const articleContent = document.getElementById('articleContent');
 
-    // Элементы чата
+    // Чат
     const chatMessages = document.getElementById('chatMessages');
     const chatInput = document.getElementById('chatInput');
     const chatSend = document.getElementById('chatSend');
 
     // Карточки
-    const serviceItems = document.querySelectorAll('.service-item');
-    const logsCard = document.querySelector('.card-logs');
+    const serviceCards = document.querySelectorAll('.service-card');
+    const logsCard = document.getElementById('logsCard');
 
-    // === ИНИЦИАЛИЗАЦИЯ VANILLA-TILT ===
-    VanillaTilt.init(document.querySelectorAll('[data-tilt]'), {
-        max: 5,
-        speed: 400,
-        glare: true,
-        'max-glare': 0.1
-    });
-
-    // === МОДАЛКА УСЛУГ ===
-
-    // Открытие модалки при клике на услугу
-    serviceItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const serviceId = item.dataset.service;
+    // === УСЛУГИ — ОТКРЫТИЕ МОДАЛКИ ===
+    serviceCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const serviceId = card.dataset.service;
             const service = servicesData[serviceId];
 
             if (service) {
@@ -89,29 +91,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 requestForm.classList.remove('active');
                 requestForm.reset();
 
-                serviceModal.classList.add('active');
-                document.body.style.overflow = 'hidden';
+                openModal(serviceModal);
             }
         });
     });
 
-    // Закрытие модалки услуг
-    modalClose.addEventListener('click', closeServiceModal);
+    // === МОДАЛКА УСЛУГ — ЗАКРЫТИЕ ===
+    modalClose.addEventListener('click', () => closeModal(serviceModal));
     serviceModal.addEventListener('click', (e) => {
-        if (e.target === serviceModal) closeServiceModal();
+        if (e.target === serviceModal) closeModal(serviceModal);
     });
 
-    function closeServiceModal() {
-        serviceModal.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    // Показать форму заявки
+    // === ПОКАЗАТЬ ФОРМУ ЗАЯВКИ ===
     showFormBtn.addEventListener('click', () => {
         requestForm.classList.toggle('active');
     });
 
-    // Отправка формы (пока в консоль, потом подключим n8n)
+    // === ОТПРАВКА ФОРМЫ ===
     requestForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
@@ -119,30 +115,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = {
             name: formData.get('name'),
             contact: formData.get('contact'),
-            service: formData.get('service')
+            service: formData.get('service'),
+            timestamp: new Date().toISOString()
         };
 
-        console.log('Заявка:', data);
+        console.log('📨 Заявка:', data);
 
         // TODO: Отправка в n8n webhook
-        // fetch('https://n8n.na8us.com/webhook/...', {
+        // fetch('https://n8n.na8us.com/webhook/contact', {
         //     method: 'POST',
         //     headers: { 'Content-Type': 'application/json' },
         //     body: JSON.stringify(data)
         // });
 
-        // Показываем сообщение
-        alert('Заявка отправлена! Мы свяжемся с вами в ближайшее время.');
-        closeServiceModal();
+        alert('✅ Заявка отправлена! Мы свяжемся с вами в ближайшее время.');
+        closeModal(serviceModal);
     });
 
-    // === МОДАЛКА СТАТЬИ ===
-
-    // Открытие статьи
+    // === СТАТЬЯ — ОТКРЫТИЕ ===
     logsCard.addEventListener('click', async () => {
-        articleModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        articleContent.innerHTML = '<p style="color: var(--cyan);">Загрузка...</p>';
+        openModal(articleModal);
+        articleContent.innerHTML = '<p style="color: var(--cyan); text-align: center;">⏳ Загрузка...</p>';
 
         try {
             const response = await fetch('logs/articles/article1/article1.md');
@@ -151,37 +144,36 @@ document.addEventListener('DOMContentLoaded', () => {
             const markdown = await response.text();
             articleContent.innerHTML = marked.parse(markdown);
         } catch (error) {
-            articleContent.innerHTML = '<p style="color: #ff4444;">Ошибка загрузки статьи. Попробуйте позже.</p>';
+            articleContent.innerHTML = `
+                <p style="color: #ff4444; text-align: center;">
+                    ❌ Ошибка загрузки статьи.<br>
+                    <small style="color: var(--text-dim);">${error.message}</small>
+                </p>
+            `;
             console.error('Ошибка загрузки статьи:', error);
         }
     });
 
-    // Закрытие модалки статьи
-    articleClose.addEventListener('click', closeArticleModal);
+    // === СТАТЬЯ — ЗАКРЫТИЕ ===
+    articleClose.addEventListener('click', () => closeModal(articleModal));
     articleModal.addEventListener('click', (e) => {
-        if (e.target === articleModal) closeArticleModal();
+        if (e.target === articleModal) closeModal(articleModal);
     });
 
-    function closeArticleModal() {
-        articleModal.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    // === ЧАТ (ЗАГЛУШКА) ===
-
+    // === ЧАТ ===
     function sendMessage() {
         const text = chatInput.value.trim();
         if (!text) return;
 
-        // Добавляем сообщение пользователя
+        // Сообщение пользователя
         addMessage(text, 'user');
         chatInput.value = '';
 
-        // Имитация ответа бота
+        // Имитация "печатает..."
         setTimeout(() => {
             const randomResponse = chatResponses[Math.floor(Math.random() * chatResponses.length)];
             addMessage(randomResponse, 'bot');
-        }, 800 + Math.random() * 1000);
+        }, 800 + Math.random() * 1200);
     }
 
     function addMessage(text, sender) {
@@ -199,27 +191,49 @@ document.addEventListener('DOMContentLoaded', () => {
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-    // Защита от XSS
+    // XSS защита
     function escapeHtml(text) {
         const div = document.createElement('div');
         div.textContent = text;
         return div.innerHTML;
     }
 
-    // Отправка по клику
     chatSend.addEventListener('click', sendMessage);
-
-    // Отправка по Enter
     chatInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') sendMessage();
     });
 
-    // === ЗАКРЫТИЕ МОДАЛОК ПО ESC ===
+    // === ОБЩИЕ ФУНКЦИИ МОДАЛОК ===
+    function openModal(modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // === ЗАКРЫТИЕ ПО ESC ===
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            closeServiceModal();
-            closeArticleModal();
+            closeModal(serviceModal);
+            closeModal(articleModal);
         }
     });
 
+    // === ПАРАЛЛАКС ЭФФЕКТ НА HERO ===
+    const heroBg = document.querySelector('.hero-bg');
+
+    if (heroBg) {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            heroBg.style.transform = `translateY(${scrolled * 0.5}px)`;
+        });
+    }
+
+    // === ПЛАВНОЕ ПОЯВЛЕНИЕ ПРИ ЗАГРУЗКЕ ===
+    document.body.classList.add('loaded');
+
+    console.log('🚀 NABUS EXPANSION initialized');
 });
