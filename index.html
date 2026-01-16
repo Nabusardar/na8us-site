@@ -5,66 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NA8US EXPANSION</title>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;500;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
 </head>
 
 <body>
-    <div class="bento-grid">
-        <!-- Bio Unit (2x2) -->
-        <div class="unit bio" data-tilt data-tilt-max="5" data-tilt-glare data-tilt-max-glare="0.2">
-            <div class="bio-content">
-                <h1 class="brand">NA8US<br>EXPANSION</h1>
-                <p class="tagline">ИИ-интеграция и автоматизация процессов. Новая эра цифрового превосходства.</p>
+    <div class="bento-container">
+        <div class="tile bio" data-tilt>
+            <h1>NA8US EXPANSION</h1>
+            <p>ИИ-интеграция и автоматизация процессов. Новая эра цифрового превосходства.</p>
+        </div>
+
+        <div class="tile socials" data-tilt>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/mr.sheleg/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://t.me/nabus_blog/10" target="_blank"><i class="fab fa-telegram"></i></a>
+                <a href="https://www.youtube.com/@nabus_Expansion" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.tiktok.com/@n_a_b_u_s" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.linkedin.com/in/esheleh/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Nabusardar" target="_blank"><i class="fab fa-github"></i></a>
             </div>
         </div>
 
-        <!-- Featured Article (2x2) -->
-        <div class="unit article" onclick="openModal()" data-tilt data-tilt-max="5" data-tilt-glare
-            data-tilt-max-glare="0.3">
+        <div class="tile article" data-tilt onclick="openArticle()">
             <div class="article-bg" style="background-image: url('logs/articles/article1/article1.jpg');"></div>
-            <div class="article-overlay">
-                <span class="article-tag">ПОСЛЕДНЯЯ СТАТЬЯ</span>
-                <h2 class="article-title">Твой клиент больше не человек...</h2>
-            </div>
-        </div>
-
-        <!-- Socials Unit (2x1) -->
-        <div class="unit socials" data-tilt data-tilt-max="5" data-tilt-glare data-tilt-max-glare="0.1">
-            <a href="https://www.instagram.com/mr.sheleg/" target="_blank" class="social-link"><i
-                    class="fa-brands fa-instagram"></i></a>
-            <a href="https://t.me/nabus_blog/10" target="_blank" class="social-link"><i
-                    class="fa-brands fa-telegram"></i></a>
-            <a href="https://www.youtube.com/@nabus_Expansion" target="_blank" class="social-link"><i
-                    class="fa-brands fa-youtube"></i></a>
-            <a href="https://www.tiktok.com/@n_a_b_u_s" target="_blank" class="social-link"><i
-                    class="fa-brands fa-tiktok"></i></a>
-            <a href="https://www.linkedin.com/in/esheleh/" target="_blank" class="social-link"><i
-                    class="fa-brands fa-linkedin"></i></a>
-            <a href="https://github.com/Nabusardar" target="_blank" class="social-link"><i
-                    class="fa-brands fa-github"></i></a>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div id="articleModal" class="modal">
-        <div class="modal-backdrop" onclick="closeModal()"></div>
-        <div class="modal-window">
-            <button class="close-btn" onclick="closeModal()">×</button>
-            <div class="modal-body" id="modal-content">
-                <div class="loading-spinner">Загрузка данных...</div>
+            <div class="article-content">
+                <span>ПОСЛЕДНЯЯ СТАТЬЯ</span>
+                <h2>Твой клиент больше не человек...</h2>
             </div>
         </div>
     </div>
 
-    <!-- Vanilla Tilt Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="article-body"></div>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 
