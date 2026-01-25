@@ -1,190 +1,275 @@
-/* ═══════════════════════════════════════════════════════════
-   NABUS EXPANSION — SCRIPT.JS v4.0
-   На основе текущего сайта + согласованные изменения
-   ═══════════════════════════════════════════════════════════ */
+/* ========================================
+   NABUS EXPANSION — MAIN SCRIPT v3
+   Terminal Style + Multiple Articles
+   ======================================== */
 
-// === SERVICE MODAL (оригинал) ===
-const serviceData = {
+// === ДАННЫЕ УСЛУГ ===
+const servicesData = {
     1: {
         number: '01',
         title: 'СИНТЕЗ ЦИФРОВЫХ ЛИЧНОСТЕЙ',
-        desc: 'Создаём AI-ассистентов, которые понимают ваш бизнес. Telegram-боты, чат-боты на сайт, голосовые помощники. Обучение на ваших данных, интеграция с CRM, работа 24/7 без перерывов.'
+        description: 'Создаём виртуальных сотрудников с памятью, голосом и характером. Они консультируют, продают, поддерживают — 24/7, без выходных и зарплаты. Полная кастомизация под ваш бренд и задачи.'
     },
     2: {
         number: '02',
         title: 'GEO-ЭКСПАНСИЯ',
-        desc: 'Продвижение в эпоху AI-поиска. Оптимизация под ChatGPT, Perplexity, Gemini, ЯндексGPT. Ваш бизнес станет источником данных для ответов нейросетей.'
+        description: 'Ваш бизнес будет первым, кого назовёт ChatGPT, Яндекс ИИ и Perplexity. Оптимизация под AI-поисковики — новое SEO для эпохи нейросетей. Аудит, стратегия, внедрение.'
     },
     3: {
         number: '03',
         title: 'НЕЙРО-АВТОМАТИЗАЦИЯ',
-        desc: 'Связываем сервисы через n8n и Make. CRM + почта + календарь + Telegram = единая система. Автоматические отчёты, уведомления, обработка заявок.'
+        description: 'Telegram-боты, CRM-интеграции, автоответы, парсинг, отчёты — всё, что можно автоматизировать, будет автоматизировано. Экономия времени и денег с первого дня.'
     },
     4: {
         number: '04',
         title: 'АРХИТЕКТУРА БИЗНЕС-ЯДРА',
-        desc: 'Внедряем ИИ внутрь компании. Анализ данных, генерация документов, автоматизация рутины. AI становится частью вашей команды.'
+        description: 'Внедряем искусственный интеллект в ваши процессы: от анализа данных до генерации контента. Не игрушка — рабочий инструмент, который окупается.'
+    }
+};
+
+// === ДАННЫЕ СТАТЕЙ ===
+const articlesData = {
+    1: {
+        path: 'logs/articles/article1/article1.md',
+        image: 'logs/articles/article1/article1.jpg'
     },
-    5: {
-        number: '05',
-        title: 'ВАЙБКОДИНГ',
-        desc: 'Быстрое создание MVP, сайтов, лендингов через AI. Код через нейросети — в 5 раз быстрее и дешевле традиционной разработки. От идеи до продакшна за дни, не месяцы.'
+    2: {
+        path: 'logs/articles/article2/article2.md',
+        image: 'logs/articles/article2/article2.jpg'
     }
 };
 
-function openServiceModal(serviceId) {
-    const data = serviceData[serviceId];
-    if (!data) return;
-    
-    const modal = document.getElementById('service-modal');
-    modal.querySelector('.service-number-large').textContent = data.number;
-    modal.querySelector('.modal-title').textContent = data.title;
-    modal.querySelector('.modal-desc').textContent = data.desc;
-    
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
+// === ОТВЕТЫ ЧАТА (ЗАГЛУШКА) ===
+const chatResponses = [
+    'Интересный запрос. Анализирую данные...',
+    'Системы NABUS обрабатывают информацию. Для детального ответа свяжитесь через Telegram.',
+    'Запрос принят. Это направление входит в наши компетенции.',
+    'Понял. Для обсуждения деталей лучше перейти в Telegram.',
+    'Обработка завершена. Рекомендую оставить заявку для персонального ответа.',
+    'Принято. Наши специалисты могут подробнее раскрыть эту тему.',
+    'Сканирую базу знаний... Найдено несколько релевантных протоколов.',
+    'Запрос классифицирован. Рекомендую изучить секцию DEPLOYMENT_LOG для примеров.'
+];
 
-function closeServiceModal() {
-    document.getElementById('service-modal').classList.remove('active');
-    document.body.style.overflow = '';
-}
+// === ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ ===
+document.addEventListener('DOMContentLoaded', () => {
 
-// === ARTICLE MODAL ===
-function openArticleModal(articleId) {
-    const modal = document.getElementById('article-modal');
-    const body = document.getElementById('article-body');
-    
-    body.innerHTML = '<div style="text-align: center; padding: 40px; color: #00f3ff;">Загрузка...</div>';
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    
-    fetch(`logs/articles/${articleId}/${articleId}.md`)
-        .then(response => {
-            if (!response.ok) throw new Error('Not found');
-            return response.text();
-        })
-        .then(markdown => {
-            body.innerHTML = parseMarkdown(markdown);
-        })
-        .catch(error => {
-            body.innerHTML = '<div style="text-align: center; padding: 40px; color: #ff4d4d;">Ошибка загрузки статьи</div>';
-        });
-}
+    // === ИНИЦИАЛИЗАЦИЯ AOS ===
+    AOS.init({
+        duration: 1000,
+        easing: 'ease-out-cubic',
+        once: false,
+        mirror: true,
+        offset: 100
+    });
 
-function closeArticleModal() {
-    document.getElementById('article-modal').classList.remove('active');
-    document.body.style.overflow = '';
-}
+    // === DOM ЭЛЕМЕНТЫ ===
 
-// === ABOUT MODAL (НОВОЕ) ===
-function openAboutModal() {
-    document.getElementById('about-modal').classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
+    // Модалка услуг
+    const serviceModal = document.getElementById('serviceModal');
+    const modalClose = document.getElementById('modalClose');
+    const modalNumber = document.getElementById('modalNumber');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const formService = document.getElementById('formService');
+    const showFormBtn = document.getElementById('showFormBtn');
+    const requestForm = document.getElementById('requestForm');
 
-function closeAboutModal() {
-    document.getElementById('about-modal').classList.remove('active');
-    document.body.style.overflow = '';
-}
+    // Модалка статьи
+    const articleModal = document.getElementById('articleModal');
+    const articleClose = document.getElementById('articleClose');
+    const articleContent = document.getElementById('articleContent');
 
-// === MARKDOWN PARSER ===
-function parseMarkdown(markdown) {
-    let content = markdown.replace(/^---[\s\S]*?---\n*/m, '');
-    content = content.replace(/^(title|date|author|image|tags|category):.*\n/gm, '');
-    
-    content = content.replace(/^### (.*$)/gim, '<h3>$1</h3>');
-    content = content.replace(/^## (.*$)/gim, '<h2>$1</h2>');
-    content = content.replace(/^# (.*$)/gim, '<h1>$1</h1>');
-    content = content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-    content = content.replace(/\*(.*?)\*/g, '<em>$1</em>');
-    content = content.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
-    content = content.replace(/^\* (.*$)/gim, '<li>$1</li>');
-    content = content.replace(/^- (.*$)/gim, '<li>$1</li>');
-    content = content.replace(/\n\n/g, '</p><p>');
-    content = '<p>' + content + '</p>';
-    content = content.replace(/<p>\s*<\/p>/g, '');
-    content = content.replace(/<p>\s*<h/g, '<h');
-    content = content.replace(/<\/h(\d)>\s*<\/p>/g, '</h$1>');
-    
-    return content;
-}
+    // Чат
+    const chatMessages = document.getElementById('chatMessages');
+    const chatInput = document.getElementById('chatInput');
+    const chatSend = document.getElementById('chatSend');
 
-// === EVENT LISTENERS ===
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // Клик по карточкам услуг
-    document.querySelectorAll('.service-card').forEach(card => {
-        card.addEventListener('click', function() {
-            const serviceId = this.getAttribute('data-service');
-            if (serviceId) {
-                openServiceModal(parseInt(serviceId));
+    // Карточки
+    const serviceCards = document.querySelectorAll('.service-card');
+    const logsCards = document.querySelectorAll('.logs-card');
+
+    // === УСЛУГИ — ОТКРЫТИЕ МОДАЛКИ ===
+    serviceCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const serviceId = card.dataset.service;
+            const service = servicesData[serviceId];
+
+            if (service) {
+                modalNumber.textContent = service.number;
+                modalTitle.textContent = service.title;
+                modalDescription.textContent = service.description;
+                formService.value = service.title;
+
+                // Сброс формы
+                requestForm.classList.remove('active');
+                requestForm.reset();
+
+                openModal(serviceModal);
             }
         });
     });
-    
-    // Клик по карточкам статей
-    document.querySelectorAll('.log-card').forEach(card => {
-        card.addEventListener('click', function() {
-            const articleId = this.getAttribute('data-article');
-            if (articleId) {
-                openArticleModal(articleId);
+
+    // === МОДАЛКА УСЛУГ — ЗАКРЫТИЕ ===
+    modalClose.addEventListener('click', () => closeModal(serviceModal));
+    serviceModal.addEventListener('click', (e) => {
+        if (e.target === serviceModal) closeModal(serviceModal);
+    });
+
+    // === ПОКАЗАТЬ ФОРМУ ЗАЯВКИ ===
+    showFormBtn.addEventListener('click', () => {
+        requestForm.classList.toggle('active');
+    });
+
+    // === ОТПРАВКА ФОРМЫ ===
+    requestForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(requestForm);
+        const data = {
+            name: formData.get('name'),
+            contact: formData.get('contact'),
+            service: formData.get('service'),
+            timestamp: new Date().toISOString()
+        };
+
+        console.log('📨 Заявка:', data);
+
+        // TODO: Отправка в n8n webhook
+        // fetch('https://n8n.na8us.com/webhook/contact', {
+        //     method: 'POST',
+        //     headers: { 'Content-Type': 'application/json' },
+        //     body: JSON.stringify(data)
+        // });
+
+        alert('✅ Заявка отправлена! Мы свяжемся с вами в ближайшее время.');
+        closeModal(serviceModal);
+    });
+
+    // === СТАТЬИ — ОТКРЫТИЕ ===
+    logsCards.forEach(card => {
+        card.addEventListener('click', async () => {
+            const articleId = card.dataset.article;
+            const article = articlesData[articleId];
+
+            if (!article) return;
+
+            openModal(articleModal);
+            articleContent.innerHTML = '<p style="color: var(--cyan); text-align: center;">⏳ Загрузка...</p>';
+
+            try {
+                const response = await fetch(article.path);
+                if (!response.ok) throw new Error('Файл не найден');
+
+                let markdown = await response.text();
+
+                // Убираем YAML frontmatter (--- ... ---)
+                markdown = markdown.replace(/^---[\s\S]*?---\n*/m, '');
+
+                // Парсим markdown
+                const parsedHtml = marked.parse(markdown);
+
+                // Добавляем картинку + контент
+                const imageHtml = `<img src="${article.image}" alt="Article cover" class="article-image">`;
+                articleContent.innerHTML = imageHtml + parsedHtml;
+
+            } catch (error) {
+                articleContent.innerHTML = `
+                    <p style="color: #ff4444; text-align: center;">
+                        ❌ Ошибка загрузки статьи.<br>
+                        <small style="color: var(--text-dim);">${error.message}</small>
+                    </p>
+                `;
+                console.error('Ошибка загрузки статьи:', error);
             }
         });
     });
-    
-    // Закрытие модалок по клику вне контента
-    document.querySelectorAll('.modal').forEach(modal => {
-        modal.addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
+
+    // === СТАТЬЯ — ЗАКРЫТИЕ ===
+    articleClose.addEventListener('click', () => closeModal(articleModal));
+    articleModal.addEventListener('click', (e) => {
+        if (e.target === articleModal) closeModal(articleModal);
     });
-    
-    // Закрытие по Escape
-    document.addEventListener('keydown', function(e) {
+
+    // === ЧАТ ===
+    function sendMessage() {
+        const text = chatInput.value.trim();
+        if (!text) return;
+
+        // Сообщение пользователя
+        addMessage(text, 'user');
+        chatInput.value = '';
+
+        // Имитация "печатает..."
+        setTimeout(() => {
+            const randomResponse = chatResponses[Math.floor(Math.random() * chatResponses.length)];
+            addMessage(randomResponse, 'bot');
+        }, 800 + Math.random() * 1200);
+    }
+
+    function addMessage(text, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `chat-message ${sender}-message`;
+
+        const prefix = sender === 'user' ? '[YOU]:' : '[NABUS]:';
+
+        messageDiv.innerHTML = `
+            <span class="message-prefix">${prefix}</span>
+            <span class="message-text">${escapeHtml(text)}</span>
+        `;
+
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // XSS защита
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    chatSend.addEventListener('click', sendMessage);
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendMessage();
+    });
+
+    // === ОБЩИЕ ФУНКЦИИ МОДАЛОК ===
+    function openModal(modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // === ЗАКРЫТИЕ ПО ESC ===
+    document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            document.querySelectorAll('.modal.active').forEach(modal => {
-                modal.classList.remove('active');
-            });
-            document.body.style.overflow = '';
+            closeModal(serviceModal);
+            closeModal(articleModal);
         }
     });
-    
-});
 
-// === SCROLL ANIMATIONS ===
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
+    // === ПАРАЛЛАКС НА HERO ===
+    const heroBg = document.querySelector('.hero-bg');
+    const heroGrid = document.querySelector('.hero-grid');
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, observerOptions);
-
-document.querySelectorAll('.section').forEach(section => {
-    section.classList.add('fade-in');
-    observer.observe(section);
-});
-
-// Стили для анимации
-const style = document.createElement('style');
-style.textContent = `
-    .fade-in {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
+    if (heroBg) {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            heroBg.style.transform = `translateY(${scrolled * 0.3}px)`;
+            if (heroGrid) {
+                heroGrid.style.opacity = Math.max(0, 1 - scrolled / 500);
+            }
+        });
     }
-    .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-`;
-document.head.appendChild(style);
+
+    // === TYPING EFFECT (опционально) ===
+    // Можно добавить анимацию печатания для терминала
+
+    console.log('🚀 NABUS EXPANSION v3 initialized');
+    console.log('📡 Systems online. Ready for deployment.');
+});
