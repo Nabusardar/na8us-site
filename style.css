@@ -1668,3 +1668,38 @@ html {
         flex: 0 0 48%;
     }
 }
+/* ═══════════════════════════════════════════════════════════
+   AOS ANIMATIONS (БАЗОВЫЕ СТИЛИ)
+   ═══════════════════════════════════════════════════════════ */
+[data-aos] {
+    opacity: 0;
+    transition-property: opacity, transform;
+}
+
+[data-aos].aos-animate {
+    opacity: 1;
+}
+
+[data-aos="fade-up"] {
+    transform: translateY(50px);
+}
+
+[data-aos="fade-up"].aos-animate {
+    transform: translateY(0);
+}
+
+[data-aos="fade-right"] {
+    transform: translateX(-50px);
+}
+
+[data-aos="fade-right"].aos-animate {
+    transform: translateX(0);
+}
+
+[data-aos="fade-in"] {
+    opacity: 0;
+}
+
+[data-aos="fade-in"].aos-animate {
+    opacity: 1;
+}
