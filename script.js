@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════
-   NABUS EXPANSION — SCRIPT.JS v4.0
-   На основе текущего сайта + согласованные изменения
+   NABUS EXPANSION — SCRIPT.JS v4.1
+   Исправлены пути к статьям и картинкам
    ═══════════════════════════════════════════════════════════ */
 
 // === SERVICE MODAL (6 STAGES) ===
@@ -108,6 +108,22 @@ const serviceData = {
     }
 };
 
+// === ДАННЫЕ СТАТЕЙ ===
+const articlesData = {
+    'article1': {
+        md: 'logs/articles/article1/article1.md',
+        img: 'logs/articles/article1/article1.jpg'
+    },
+    'article2': {
+        md: 'logs/articles/article2/article2.md',
+        img: 'logs/articles/article2/article2.jpg'
+    },
+    'article3': {
+        md: 'logs/articles/article3/article3.md',
+        img: 'logs/articles/article3/article3.png'
+    }
+};
+
 function openServiceModal(serviceId) {
     const data = serviceData[serviceId];
     if (!data) return;
@@ -116,7 +132,6 @@ function openServiceModal(serviceId) {
     modal.querySelector('.service-number-large').textContent = data.number;
     modal.querySelector('.modal-title').textContent = data.title;
 
-    // Расширенное описание с процессом и артефактами
     let html = `
         <p style="color: var(--cyan); font-style: italic; margin-bottom: 15px;">"${data.hook}"</p>
         <p>${data.desc}</p>
@@ -140,25 +155,37 @@ function closeServiceModal() {
     document.body.style.overflow = '';
 }
 
-// === ARTICLE MODAL ===
+// === ARTICLE MODAL (ИСПРАВЛЕНО) ===
 function openArticleModal(articleId) {
     const modal = document.getElementById('article-modal');
     const body = document.getElementById('article-body');
+    
+    // Получаем данные статьи
+    const article = articlesData[articleId];
+    if (!article) {
+        body.innerHTML = '<div style="text-align: center; padding: 40px; color: #ff4d4d;">Статья не найдена</div>';
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        return;
+    }
 
-    body.innerHTML = '<div style="text-align: center; padding: 40px; color: #00f3ff;">Загрузка...</div>';
+    body.innerHTML = '<div style="text-align: center; padding: 40px; color: #00f3ff;">⏳ Загрузка...</div>';
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
 
-    fetch(`logs/articles/${articleId}/${articleId}.md`)
+    fetch(article.md)
         .then(response => {
             if (!response.ok) throw new Error('Not found');
             return response.text();
         })
         .then(markdown => {
-            body.innerHTML = parseMarkdown(markdown);
+            // Добавляем картинку + контент
+            let html = `<img src="${article.img}" alt="Article cover" class="article-cover" style="width: 100%; max-height: 300px; object-fit: cover; border-radius: 12px; margin-bottom: 25px; border: 1px solid rgba(0, 243, 255, 0.2);" onerror="this.style.display='none'">`;
+            html += parseMarkdown(markdown);
+            body.innerHTML = html;
         })
         .catch(error => {
-            body.innerHTML = '<div style="text-align: center; padding: 40px; color: #ff4d4d;">Ошибка загрузки статьи</div>';
+            body.innerHTML = '<div style="text-align: center; padding: 40px; color: #ff4d4d;">❌ Ошибка загрузки статьи</div>';
         });
 }
 
@@ -167,7 +194,7 @@ function closeArticleModal() {
     document.body.style.overflow = '';
 }
 
-// === ABOUT MODAL (НОВОЕ) ===
+// === ABOUT MODAL ===
 function openAboutModal() {
     document.getElementById('about-modal').classList.add('active');
     document.body.style.overflow = 'hidden';
