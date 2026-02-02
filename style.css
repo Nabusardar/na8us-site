@@ -115,7 +115,7 @@ body {
 .section {
     position: relative;
     z-index: 1;
-    padding: 100px 60px;
+    padding: 100px 0;
     background: var(--bg-section);
 }
 
@@ -1507,29 +1507,6 @@ body {
     color: #ff00ff;
 }
 
-/* === 4. BENTO-ЭФФЕКТ: HERO STICKY + НАЕЗД === */
-.section-hero {
-    position: sticky !important;
-    top: 0;
-    z-index: 1;
-}
-
-.section-identity,
-.section-services,
-.section-ventures,
-.section-deployments,
-.section-logs,
-.section-chat,
-.section-footer {
-    position: relative;
-    z-index: 10;
-    background: var(--bg-deep);
-}
-
-/* Первая секция после Hero — с тенью сверху для эффекта наезда */
-.section-identity {
-    box-shadow: 0 -30px 60px rgba(0, 0, 0, 0.8);
-    border-top: 1px solid var(--border-color);
 }
 
 /* === 5. УБРАТЬ ДЁРГАНИЕ СКРОЛЛА === */
