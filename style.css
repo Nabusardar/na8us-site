@@ -542,9 +542,10 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
     max-width: 1200px;
+    margin: 0 auto;
 }
 
-.venture-card {
+    margin: 0 auto;
     display: flex;
     align-items: center;
     gap: 20px;
