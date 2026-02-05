@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Библиотека знаний | NÅ8ⓤS Expansion</title>
+    <meta name="description" content="Все статьи по AI, автоматизации, DevOps и цифровому превосходству. База знаний от Эдуарда Шелега.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        /* Дополнительные стили для articles.html */
+        .navbar {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        body {
+            padding-top: 80px;
+        }
+
+        .articles-page {
+            padding-top: 60px;
+            min-height: 100vh;
+        }
+
+        .articles-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 0 20px;
+        }
+
+        .articles-header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: #00D9FF;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+        }
+
+        .articles-header p {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.2rem;
+            color: #888;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .articles-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+            padding: 0 20px;
+        }
+
+        .filter-btn {
+            background: transparent !important;
+            border: 2px solid #00D9FF !important;
+            color: #00D9FF !important;
+            padding: 12px 30px !important;
+            border-radius: 5px !important;
+            font-family: 'Orbitron', sans-serif !important;
+            font-size: 14px !important;
+            font-weight: 600 !important;
+            letter-spacing: 2px !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            text-transform: uppercase !important;
+            text-decoration: none !important;
+            display: inline-block !important;
+        }
+
+        .filter-btn:hover {
+            background: #00D9FF !important;
+            color: #0a0a0a !important;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.4) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        .filter-btn.active {
+            background: #00D9FF !important;
+            color: #0a0a0a !important;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.5) !important;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        .article-item.hidden {
+            display: none;
+        }
+
+        .back-to-home {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            border-top: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .articles-header h1 {
+                font-size: 2rem;
+            }
+
+            .articles-filters {
+                gap: 10px;
+            }
+
+            .filter-btn {
+                padding: 8px 16px !important;
+                font-size: 0.75rem !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Матричный эффект -->
+    <div class="matrix-bg">
+        <div class="matrix-column" style="left: 3%;">01001010110101</div>
+        <div class="matrix-column" style="left: 8%;">async_await();</div>
+        <div class="matrix-column" style="left: 13%;">DNA::init();</div>
+        <div class="matrix-column" style="right: 13%;">SYSTEM.RUN</div>
+        <div class="matrix-column" style="right: 8%;">10110100101</div>
+        <div class="matrix-column" style="right: 3%;">nabus.expand</div>
+    </div>
+
+    <!-- Навигация -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-text">NÅ8ⓤS</span>
+                <span class="logo-dot">_</span>
+                <span class="logo-expansion">EXPANSION</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html#hero">Главная</a></li>
+                <li><a href="index.html#identity">Обо мне</a></li>
+                <li><a href="index.html#services">Услуги</a></li>
+                <li><a href="articles.html" class="active">Статьи</a></li>
+                <li><a href="index.html#contact">Контакт</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Страница статей -->
+    <div class="articles-page">
+        <!-- Заголовок -->
+        <div class="articles-header" data-aos="fade-up">
+            <h1>БИБЛИОТЕКА ЗНАНИЙ</h1>
+            <p>Все статьи по AI, автоматизации, DevOps и цифровому превосходству</p>
+        </div>
+
+        <!-- Фильтры -->
+        <div class="articles-filters" data-aos="fade-up" data-aos-delay="100">
+            <button class="filter-btn active" data-filter="all">Все</button>
+            <button class="filter-btn" data-filter="ai">AI</button>
+            <button class="filter-btn" data-filter="devops">DevOps</button>
+            <button class="filter-btn" data-filter="automation">Автоматизация</button>
+            <button class="filter-btn" data-filter="business">Бизнес</button>
+            <button class="filter-btn" data-filter="biotech">BioTech</button>
+        </div>
+
+        <!-- Сетка статей -->
+        <div class="articles-grid">
+            <!-- Статья 4 -->
+            <div class="article-item" data-tags="devops,automation,ai" data-aos="fade-up" data-aos-delay="0">
+                <div class="log-card" data-article="article4">
+                    <div class="log-image">
+                        <img src="logs/articles/article4/article4.png" alt="CLI Agent">
+                    </div>
+                    <div class="log-content">
+                        <div class="log-tags">CLI • DEVOPS • AUTOMATION</div>
+                        <h3 class="log-title">CLI Agent: как я построил цифровую архитектуру</h3>
+                        <p class="log-excerpt">Как за 24 часа превратил хаос в систему и создал персонализированную AI-систему</p>
+                        <span class="log-link">Читать →</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Статья 3 -->
+            <div class="article-item" data-tags="ai,webdev,business" data-aos="fade-up" data-aos-delay="100">
+                <div class="log-card" data-article="article3">
+                    <div class="log-image">
+                        <img src="logs/articles/article3/article3.png" alt="AI-Архитектура">
+                    </div>
+                    <div class="log-content">
+                        <div class="log-tags">AI • WEBDEV • МНЕНИЕ</div>
+                        <h3 class="log-title">Веб-разработка мертва. Да здравствует AI-Архитектура</h3>
+                        <p class="log-excerpt">Как я создал экосистему Nabus Expansion без студии и бюджета</p>
+                        <span class="log-link">Читать →</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Статья 2 -->
+            <div class="article-item" data-tags="biotech,ai,automation" data-aos="fade-up" data-aos-delay="200">
+                <div class="log-card" data-article="article2">
+                    <div class="log-image">
+                        <img src="logs/articles/article2/article2.jpg" alt="Биотех">
+                    </div>
+                    <div class="log-content">
+                        <div class="log-tags">BIOTECH • AI AUTOMATION • FUTURE</div>
+                        <h3 class="log-title">Манифест нового Биотеха</h3>
+                        <p class="log-excerpt">Как слияние AI и биологии убивает старый бизнес</p>
+                        <span class="log-link">Читать →</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Статья 1 -->
+            <div class="article-item" data-tags="ai,business,automation" data-aos="fade-up" data-aos-delay="300">
+                <div class="log-card" data-article="article1">
+                    <div class="log-image">
+                        <img src="logs/articles/article1/article1.jpg" alt="AI Agents">
+                    </div>
+                    <div class="log-content">
+                        <div class="log-tags">AI AGENTS • UCP • B2A</div>
+                        <h3 class="log-title">Твой клиент больше не человек</h3>
+                        <p class="log-excerpt">Как Google UCP убивает классический e-com и рождает B2A</p>
+                        <span class="log-link">Читать →</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Кнопка назад -->
+        <div class="back-to-home" data-aos="fade-up">
+            <a href="index.html" class="btn-primary">← Вернуться на главную</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 NÅ8ⓤS Expansion. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Модальное окно статьи (переиспользуем с index.html) -->
+    <div id="article-modal" class="modal">
+        <div class="modal-content article-modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="article-body">Загрузка...</div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="script.js?v=2"></script>
+    <script>
+        // Инициализация AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out',
+            once: true,
+            offset: 50
+        });
+
+        // Фильтрация статей
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const articleItems = document.querySelectorAll('.article-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Убираем активный класс у всех кнопок
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Добавляем активный класс текущей
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                articleItems.forEach(item => {
+                    const tags = item.getAttribute('data-tags');
+
+                    if (filter === 'all' || tags.includes(filter)) {
+                        item.classList.remove('hidden');
+                        // Перезапускаем анимацию
+                        item.style.animation = 'none';
+                        setTimeout(() => item.style.animation = '', 10);
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

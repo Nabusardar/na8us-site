@@ -895,6 +895,34 @@ body {
     color: var(--cyan);
 }
 
+/* Кнопка "Все статьи" */
+.logs-more {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.logs-more a {
+    display: inline-block;
+    padding: 12px 30px;
+    background: transparent;
+    border: 2px solid var(--cyan);
+    color: var(--cyan);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.logs-more a:hover {
+    background: var(--cyan);
+    color: var(--dark-bg);
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.4);
+}
+
 /* ═══════════════════════════════════════════════════════════
    NEURAL_LINK (оригинальный стиль)
    ═══════════════════════════════════════════════════════════ */
