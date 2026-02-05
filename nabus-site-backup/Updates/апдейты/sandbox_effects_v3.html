@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧪 SANDBOX v3 — СТРОГО ПО ТРЕБОВАНИЯМ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: #050505;
+            color: #ffffff;
+            min-height: 100vh;
+            padding: 40px;
+        }
+
+        .sandbox-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 30px;
+            border: 1px solid #00ff88;
+            border-radius: 10px;
+            background: rgba(0, 255, 136, 0.05);
+        }
+
+        .sandbox-header h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: #00ff88;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .sandbox-header p {
+            color: #888;
+            font-size: 16px;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: #00ff88;
+            color: #000;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           СЕКЦИЯ: Тестовые блоки
+           ═══════════════════════════════════════════════════════════ */
+        
+        .test-section {
+            margin-bottom: 80px;
+            padding: 40px;
+            border: 1px dashed #333;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .test-section::before {
+            content: attr(data-test-name);
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: #050505;
+            padding: 0 15px;
+            color: #00ff88;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 14px;
+        }
+
+        .test-label {
+            font-family: 'Share Tech Mono', monospace;
+            color: #666;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           ТЕСТ 1: Полный HERO — как должен выглядеть
+           ═══════════════════════════════════════════════════════════ */
+        
+        .hero-full-preview {
+            background: #0a0a0a;
+            border-radius: 15px;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Терминал */
+        .terminal-window {
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid #1a1a1a;
+            border-radius: 12px;
+            padding: 25px 40px;
+            margin-bottom: 40px;
+            text-align: left;
+            max-width: 600px;
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .terminal-dots span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-dots span:nth-child(1) { background: #ff5f56; }
+        .terminal-dots span:nth-child(2) { background: #ffbd2e; }
+        .terminal-dots span:nth-child(3) { background: #27ca40; }
+
+        .terminal-title {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 12px;
+            color: #666;
+            margin-left: 10px;
+        }
+
+        .terminal-status {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 14px;
+            color: #00ff88;
+            margin-bottom: 20px;
+        }
+
+        .terminal-status .dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #00ff88;
+            border-radius: 50%;
+            margin-left: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* Строки терминала */
+        .terminal-line {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 22px;
+            margin: 15px 0;
+        }
+
+        /* > ЗЕЛЁНЫЙ */
+        .terminal-line .prompt {
+            color: #00ff88;
+        }
+
+        /* Текст первой строки - БЕЛЫЙ */
+        .terminal-line .text-white {
+            color: #ffffff;
+        }
+
+        /* Вторая строка - ПОЛНОСТЬЮ НЕОН (циан) */
+        .terminal-line .text-cyan {
+            color: #00f3ff;
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+        }
+
+        /* Мигающий курсор */
+        .cursor {
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Слоган - ЗЕЛЁНЫЙ */
+        .slogan-green {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 18px;
+            color: #00ff88;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        /* Бренд */
+        .brand-section {
+            margin-top: 50px;
+        }
+
+        .brand-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .brand-name .white {
+            color: #ffffff;
+        }
+
+        .brand-name .cyan {
+            color: #00f3ff;
+            text-shadow: 0 0 40px rgba(0, 243, 255, 0.6);
+        }
+
+        /* АРХИТЕКТУРА - ЗЕЛЁНЫЙ, тот же шрифт/размер */
+        .architecture-green {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 14px;
+            letter-spacing: 3px;
+            color: #00ff88;
+            margin-top: 20px;
+        }
+
+        /* Scroll индикатор */
+        .scroll-indicator {
+            margin-top: 40px;
+            color: #444;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 3px;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, #00f3ff, transparent);
+            margin: 15px auto 0;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           ТЕСТ 2: Заголовки секций — подписи БЕЛЫЕ
+           ═══════════════════════════════════════════════════════════ */
+        
+        .headers-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .headers-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section-header-demo {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(10, 10, 10, 0.5);
+            border: 1px solid #1a1a1a;
+            border-radius: 15px;
+        }
+
+        /* Заголовок - НЕОН (циан) */
+        .section-title-demo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            color: #00f3ff;
+            text-shadow: 0 0 30px rgba(0, 243, 255, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        /* Подпись - БЕЛЫЙ */
+        .section-subtitle-demo {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 14px;
+            color: #ffffff;
+            letter-spacing: 2px;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           ТЕСТ 3: Матричный эффект (одобрено)
+           ═══════════════════════════════════════════════════════════ */
+        
+        .matrix-demo {
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+            background: #030303;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .matrix-demo .content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 40px;
+            background: rgba(5, 5, 5, 0.9);
+            border-radius: 10px;
+        }
+
+        .matrix-column {
+            position: absolute;
+            top: 0;
+            width: 20px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 14px;
+            color: #00f3ff;
+            opacity: 0.3;
+            writing-mode: vertical-rl;
+            animation: matrixFall 8s linear infinite;
+        }
+
+        .matrix-column:nth-child(1) { left: 5%; animation-delay: 0s; color: #00f3ff; }
+        .matrix-column:nth-child(2) { left: 15%; animation-delay: -2s; color: #00ff88; }
+        .matrix-column:nth-child(3) { left: 25%; animation-delay: -4s; color: #00f3ff; }
+        .matrix-column:nth-child(4) { right: 25%; animation-delay: -1s; color: #00ff88; }
+        .matrix-column:nth-child(5) { right: 15%; animation-delay: -3s; color: #00f3ff; }
+        .matrix-column:nth-child(6) { right: 5%; animation-delay: -5s; color: #00ff88; }
+
+        @keyframes matrixFall {
+            0% { transform: translateY(-100%); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(100%); opacity: 0; }
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           ИТОГОВАЯ СВОДКА
+           ═══════════════════════════════════════════════════════════ */
+        
+        .summary {
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid #00ff88;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 60px;
+        }
+
+        .summary h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: #00ff88;
+            margin-bottom: 20px;
+        }
+
+        .summary table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .summary th, .summary td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #1a1a1a;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 14px;
+        }
+
+        .summary th {
+            color: #00f3ff;
+        }
+
+        .summary td {
+            color: #aaa;
+        }
+
+        .color-sample {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        .color-sample.green { background: #00ff88; }
+        .color-sample.cyan { background: #00f3ff; }
+        .color-sample.white { background: #ffffff; }
+    </style>
+</head>
+<body>
+
+    <div class="sandbox-header">
+        <h1>🧪 SANDBOX v3 — СТРОГО ПО ТРЕБОВАНИЯМ</h1>
+        <p>Исправлено по твоим указаниям. Без отсебятины.</p>
+        <span class="version-badge">v3.0 — ИСПРАВЛЕНО</span>
+    </div>
+
+    <!-- ТЕСТ 1: Полный HERO -->
+    <div class="test-section" data-test-name="ТЕСТ 1: HERO — полный превью">
+        <div class="test-label">// Структура НЕ изменена. Только цвета по требованиям.</div>
+        
+        <div class="hero-full-preview">
+            
+            <!-- Терминал -->
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <span class="terminal-title">nabus_core.exe</span>
+                </div>
+
+                <div class="terminal-status">
+                    STATUS: SYSTEM ONLINE <span class="dot"></span>
+                </div>
+
+                <!-- Строка 1: > ЗЕЛЁНЫЙ, текст БЕЛЫЙ -->
+                <div class="terminal-line">
+                    <span class="prompt">&gt;</span> <span class="text-white">ВАШ БИЗНЕС — ЭТО ЖЕЛЕЗО</span> <span class="text-white cursor">_</span>
+                </div>
+
+                <!-- Строка 2: > ЗЕЛЁНЫЙ, текст ПОЛНОСТЬЮ НЕОН (циан) -->
+                <div class="terminal-line">
+                    <span class="prompt">&gt;</span> <span class="text-cyan">МЫ — ОПЕРАЦИОННАЯ СИСТЕМА</span> <span class="text-cyan cursor">_</span>
+                </div>
+
+                <!-- Слоган: > ЗЕЛЁНЫЙ, текст ЗЕЛЁНЫЙ -->
+                <div class="slogan-green">
+                    <span class="prompt">&gt;</span> Внедряем ИИ туда, где раньше справлялись только люди<span class="cursor">_</span>
+                </div>
+            </div>
+
+            <!-- Бренд -->
+            <div class="brand-section">
+                <div class="brand-name">
+                    <span class="white">NAB</span><span class="cyan">U</span><span class="white">S</span>
+                </div>
+                <div class="brand-name">
+                    <span class="cyan">EXPANSION</span>
+                </div>
+
+                <!-- АРХИТЕКТУРА - ЗЕЛЁНЫЙ -->
+                <div class="architecture-green">
+                    [ АРХИТЕКТУРА ЦИФРОВОГО ПРЕВОСХОДСТВА ]
+                </div>
+            </div>
+
+            <!-- Scroll -->
+            <div class="scroll-indicator">
+                SCROLL
+                <div class="scroll-line"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ТЕСТ 2: Заголовки секций -->
+    <div class="test-section" data-test-name="ТЕСТ 2: Заголовки секций — подписи БЕЛЫЕ">
+        <div class="test-label">// Заголовок = НЕОН (циан). Подпись = БЕЛЫЙ.</div>
+        
+        <div class="headers-grid">
+            <div class="section-header-demo">
+                <h2 class="section-title-demo">SERVICE_MATRIX</h2>
+                <span class="section-subtitle-demo">[ наши протоколы ]</span>
+            </div>
+
+            <div class="section-header-demo">
+                <h2 class="section-title-demo">DEPLOYMENT_LOG</h2>
+                <span class="section-subtitle-demo">[ внедрения в продакшн ]</span>
+            </div>
+
+            <div class="section-header-demo">
+                <h2 class="section-title-demo">LOGS_ENGINE</h2>
+                <span class="section-subtitle-demo">[ база знаний ]</span>
+            </div>
+
+            <div class="section-header-demo">
+                <h2 class="section-title-demo">NEURAL_LINK</h2>
+                <span class="section-subtitle-demo">[ канал связи ]</span>
+            </div>
+
+            <div class="section-header-demo">
+                <h2 class="section-title-demo">IDENTITY_CORE</h2>
+                <span class="section-subtitle-demo">[ кто стоит за системой ]</span>
+            </div>
+
+            <div class="section-header-demo">
+                <h2 class="section-title-demo">VENTURE_MATRIX</h2>
+                <span class="section-subtitle-demo">[ экосистема проектов ]</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ТЕСТ 3: Матрица -->
+    <div class="test-section" data-test-name="ТЕСТ 3: Матричный эффект (одобрено ✅)">
+        <div class="test-label">// Падающий код по бокам — принято</div>
+        <div class="matrix-demo">
+            <div class="matrix-column">01001010110101</div>
+            <div class="matrix-column">async_await();</div>
+            <div class="matrix-column">DNA::init();</div>
+            <div class="matrix-column">SYSTEM.RUN</div>
+            <div class="matrix-column">10110100101</div>
+            <div class="matrix-column">nabus.expand</div>
+            <div class="content">
+                <div style="font-family: 'Orbitron', sans-serif; color: #00f3ff; font-size: 24px;">
+                    КОНТЕНТ В ЦЕНТРЕ
+                </div>
+                <div style="color: #888; margin-top: 10px;">
+                    Строки кода падают по бокам
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- СВОДКА -->
+    <div class="summary">
+        <h3>📋 СВОДКА ИЗМЕНЕНИЙ</h3>
+        <table>
+            <tr>
+                <th>Элемент</th>
+                <th>Цвет</th>
+                <th>Код</th>
+            </tr>
+            <tr>
+                <td>Все значки <code>&gt;</code></td>
+                <td><span class="color-sample green"></span>ЗЕЛЁНЫЙ</td>
+                <td>#00ff88</td>
+            </tr>
+            <tr>
+                <td>Текст "ВАШ БИЗНЕС — ЭТО ЖЕЛЕЗО"</td>
+                <td><span class="color-sample white"></span>БЕЛЫЙ</td>
+                <td>#ffffff</td>
+            </tr>
+            <tr>
+                <td>Текст "МЫ — ОПЕРАЦИОННАЯ СИСТЕМА"</td>
+                <td><span class="color-sample cyan"></span>НЕОН (циан)</td>
+                <td>#00f3ff</td>
+            </tr>
+            <tr>
+                <td>Слоган</td>
+                <td><span class="color-sample green"></span>ЗЕЛЁНЫЙ</td>
+                <td>#00ff88</td>
+            </tr>
+            <tr>
+                <td>[ АРХИТЕКТУРА ЦИФРОВОГО ПРЕВОСХОДСТВА ]</td>
+                <td><span class="color-sample green"></span>ЗЕЛЁНЫЙ</td>
+                <td>#00ff88</td>
+            </tr>
+            <tr>
+                <td>Заголовки секций (SERVICE_MATRIX и т.д.)</td>
+                <td><span class="color-sample cyan"></span>НЕОН (циан)</td>
+                <td>#00f3ff</td>
+            </tr>
+            <tr>
+                <td>Подписи секций ([ база знаний ] и т.д.)</td>
+                <td><span class="color-sample white"></span>БЕЛЫЙ</td>
+                <td>#ffffff</td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

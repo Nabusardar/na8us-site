@@ -1,0 +1,281 @@
+/* ========================================
+   ДОПОЛНЕНИЯ v4.1 — ДОБАВИТЬ В КОНЕЦ style.css
+   НЕ УДАЛЯТЬ СУЩЕСТВУЮЩИЙ КОД!
+   ======================================== */
+
+/* === 1. ГЛИТЧ-ЭФФЕКТ ДЛЯ ЗАГОЛОВКОВ === */
+.glitch-title {
+    position: relative;
+    animation: glitchText 3s ease-in-out infinite;
+    animation-delay: 3s;
+}
+
+.glitch-title::before,
+.glitch-title::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.glitch-title::before {
+    color: #ff00ff;
+    animation: glitchBefore 3s ease-in-out infinite;
+    animation-delay: 3s;
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+}
+
+.glitch-title::after {
+    color: #00ffff;
+    animation: glitchAfter 3s ease-in-out infinite;
+    animation-delay: 3s;
+    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+}
+
+@keyframes glitchText {
+    0%, 90%, 100% { transform: translate(0); }
+    92% { transform: translate(-2px, 1px); }
+    94% { transform: translate(2px, -1px); }
+    96% { transform: translate(-1px, 2px); }
+    98% { transform: translate(1px, -2px); }
+}
+
+@keyframes glitchBefore {
+    0%, 90%, 100% { opacity: 0; transform: translate(0); }
+    92% { opacity: 0.8; transform: translate(-3px, 0); }
+    94% { opacity: 0; transform: translate(3px, 0); }
+    96% { opacity: 0.8; transform: translate(-2px, 0); }
+    98% { opacity: 0; }
+}
+
+@keyframes glitchAfter {
+    0%, 90%, 100% { opacity: 0; transform: translate(0); }
+    91% { opacity: 0.8; transform: translate(3px, 0); }
+    93% { opacity: 0; transform: translate(-3px, 0); }
+    95% { opacity: 0.8; transform: translate(2px, 0); }
+    97% { opacity: 0; }
+}
+
+/* === 2. HERO — 80vh + ТЕРМИНАЛ МЕНЬШЕ === */
+.section-hero {
+    min-height: 80vh !important;
+}
+
+.terminal-window {
+    max-width: 560px !important; /* было 700px, -20% */
+    transform: scale(0.9);
+}
+
+/* Слоган: зелёный > + белый текст */
+.sub-line .terminal-prompt {
+    color: var(--green) !important;
+}
+
+.terminal-output {
+    color: var(--text-primary) !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+/* === 3. MATRIX RAIN — ЯРЧЕ + ШИРЕ === */
+.matrix-rain {
+    width: 120% !important;
+    left: -10% !important;
+}
+
+.matrix-column {
+    opacity: 0.12 !important; /* было 0.08, +50% яркости */
+    font-size: 16px;
+}
+
+/* Разные цвета */
+.matrix-column:nth-child(1) { color: var(--cyan); }
+.matrix-column:nth-child(2) { color: var(--green); }
+.matrix-column:nth-child(3) { color: #ff00ff; }
+.matrix-column:nth-child(4) { color: var(--green); }
+.matrix-column:nth-child(5) { color: var(--cyan); }
+.matrix-column:nth-child(6) { color: #ff00ff; }
+
+/* === 4. BENTO-ЭФФЕКТ: HERO STICKY + НАЕЗД === */
+.section-hero {
+    position: sticky !important;
+    top: 0;
+    z-index: 1;
+}
+
+.section-identity,
+.section-services,
+.section-ventures,
+.section-deployments,
+.section-logs,
+.section-chat,
+.section-footer {
+    position: relative;
+    z-index: 10;
+    background: var(--bg-deep);
+}
+
+/* Первая секция после Hero — с тенью сверху для эффекта наезда */
+.section-identity {
+    box-shadow: 0 -30px 60px rgba(0, 0, 0, 0.8);
+    border-top: 1px solid var(--border-color);
+}
+
+/* === 5. УБРАТЬ ДЁРГАНИЕ СКРОЛЛА === */
+html {
+    scroll-snap-type: none !important;
+}
+
+.section {
+    scroll-snap-align: none !important;
+}
+
+/* === 6. DEPLOYMENT METRICS — 4 В РЯД === */
+.deployment-metrics {
+    display: flex !important;
+    justify-content: space-between;
+    gap: 15px;
+    grid-template-columns: unset;
+}
+
+.deployment-metrics-row2 {
+    display: none !important; /* скрываем второй ряд */
+}
+
+.deployment-metrics .metric {
+    flex: 1;
+    min-width: 0;
+}
+
+/* === 7. SERVICE_MATRIX — 6 БЛОКОВ (3x2) === */
+.services-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 25px;
+}
+
+.service-card .service-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 15px;
+}
+
+.service-card .service-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: var(--cyan);
+    stroke-width: 1.5;
+    fill: none;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon svg {
+    stroke: var(--text-primary);
+    filter: drop-shadow(0 0 10px var(--cyan));
+}
+
+/* Номер Stage */
+.service-stage {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--purple);
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+/* Суть под описанием */
+.service-essence {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--green);
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color);
+}
+
+/* === 8. МОДАЛКА SERVICES — РАСШИРЕННАЯ === */
+.modal-process {
+    margin: 20px 0;
+    padding: 20px;
+    background: rgba(0, 243, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+}
+
+.modal-process-title {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--cyan);
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.modal-process ul {
+    list-style: none;
+    padding: 0;
+}
+
+.modal-process li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.modal-process li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--cyan);
+}
+
+.modal-artifacts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal-artifact {
+    background: rgba(112, 0, 255, 0.1);
+    border: 1px solid rgba(112, 0, 255, 0.3);
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+    font-size: 0.75rem;
+}
+
+.modal-artifact-icon {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.modal-artifact-text {
+    color: var(--text-secondary);
+}
+
+/* === RESPONSIVE FIX === */
+@media (max-width: 900px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .modal-artifacts {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .services-grid {
+        grid-template-columns: 1fr !important;
+    }
+    .deployment-metrics {
+        flex-wrap: wrap;
+    }
+    .deployment-metrics .metric {
+        flex: 0 0 48%;
+    }
+}

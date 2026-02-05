@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>SVG Иконки — SERVICE_MATRIX</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #050505;
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 40px;
+        }
+        h1 {
+            color: #00f3ff;
+            margin-bottom: 40px;
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 900px;
+        }
+        .card {
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            border-color: #00f3ff;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
+        }
+        .icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+        }
+        .icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: #00f3ff;
+            stroke-width: 1.5;
+            fill: none;
+        }
+        .stage {
+            font-size: 0.7rem;
+            color: #7000ff;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        .name {
+            font-size: 0.9rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .hook {
+            font-size: 0.75rem;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <h1>// SERVICE_MATRIX — ИКОНКИ НА СОГЛАСОВАНИЕ</h1>
+    
+    <div class="grid">
+        <!-- Stage 1: Архитектура -->
+        <div class="card">
+            <div class="icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                    <path d="M2 17l10 5 10-5"/>
+                    <path d="M2 12l10 5 10-5"/>
+                </svg>
+            </div>
+            <div class="stage">STAGE 1</div>
+            <div class="name">АРХИТЕКТУРА БИЗНЕС-ЯДРА</div>
+            <div class="hook">AI-Audit & Strategy</div>
+        </div>
+
+        <!-- Stage 2: Автоматизация -->
+        <div class="card">
+            <div class="icon">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+                </svg>
+            </div>
+            <div class="stage">STAGE 2</div>
+            <div class="name">НЕЙРО-АВТОМАТИЗАЦИЯ</div>
+            <div class="hook">Business Autopilot</div>
+        </div>
+
+        <!-- Stage 3: Вайбкодинг -->
+        <div class="card">
+            <div class="icon">
+                <svg viewBox="0 0 24 24">
+                    <polyline points="16 18 22 12 16 6"/>
+                    <polyline points="8 6 2 12 8 18"/>
+                    <line x1="12" y1="2" x2="12" y2="22" stroke-dasharray="2 2"/>
+                </svg>
+            </div>
+            <div class="stage">STAGE 3</div>
+            <div class="name">ВАЙБКОДИНГ</div>
+            <div class="hook">Rapid AI-Development</div>
+        </div>
+
+        <!-- Stage 4: AI-Staffing -->
+        <div class="card">
+            <div class="icon">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="8" r="4"/>
+                    <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+                    <circle cx="12" cy="8" r="1" fill="#00f3ff"/>
+                    <path d="M9 6c0-2 1.5-3 3-3s3 1 3 3" stroke-dasharray="1 1"/>
+                </svg>
+            </div>
+            <div class="stage">STAGE 4</div>
+            <div class="name">СИНТЕЗ ЦИФРОВЫХ ЛИЧНОСТЕЙ</div>
+            <div class="hook">AI-Staffing</div>
+        </div>
+
+        <!-- Stage 5: GEO -->
+        <div class="card">
+            <div class="icon">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M2 12h20"/>
+                    <path d="M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20"/>
+                    <circle cx="12" cy="12" r="2" fill="#00f3ff"/>
+                </svg>
+            </div>
+            <div class="stage">STAGE 5</div>
+            <div class="name">GEO-ЭКСПАНСИЯ</div>
+            <div class="hook">AI-Visibility</div>
+        </div>
+
+        <!-- Stage 6: Контент -->
+        <div class="card">
+            <div class="icon">
+                <svg viewBox="0 0 24 24">
+                    <rect x="2" y="3" width="20" height="14" rx="2"/>
+                    <polygon points="10,8 16,11 10,14" fill="#00f3ff"/>
+                    <line x1="6" y1="21" x2="18" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                </svg>
+            </div>
+            <div class="stage">STAGE 6</div>
+            <div class="name">ГЕНЕРАТИВНАЯ МЕДИА-ФАБРИКА</div>
+            <div class="hook">AI-Content Production</div>
+        </div>
+    </div>
+
+    <br><br>
+    <p style="color: #555; font-size: 0.8rem;">
+        * Все иконки линейные, stroke: #00f3ff, при наведении будет glow-эффект
+    </p>
+</body>
+</html>
