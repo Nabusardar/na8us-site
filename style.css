@@ -1267,6 +1267,44 @@ body {
     background: var(--white);
 }
 
+/* Modal Actions */
+.modal-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.btn-telegram,
+.btn-form {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--cyan);
+    background: transparent;
+    border: 1px solid var(--cyan);
+    padding: 12px 25px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-telegram:hover,
+.btn-form:hover {
+    background: rgba(0, 243, 255, 0.1);
+}
+
+.btn-form.primary {
+    background: var(--cyan);
+    color: var(--bg-dark);
+}
+
+.btn-form.primary:hover {
+    background: var(--white);
+}
+
 /* Article Modal */
 .article-modal-content {
     max-width: 800px;
