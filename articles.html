@@ -181,12 +181,12 @@
 
         <!-- Фильтры -->
         <div class="articles-filters" data-aos="fade-up" data-aos-delay="100">
-            <button class="filter-btn active" data-filter="all">Все</button>
-            <button class="filter-btn" data-filter="ai">AI</button>
-            <button class="filter-btn" data-filter="devops">DevOps</button>
-            <button class="filter-btn" data-filter="automation">Автоматизация</button>
-            <button class="filter-btn" data-filter="business">Бизнес</button>
-            <button class="filter-btn" data-filter="biotech">BioTech</button>
+            <button class="filter-btn active" data-filter="all" style="background: #00D9FF !important; color: #0a0a0a !important; border: 2px solid #00D9FF !important; padding: 12px 30px !important; border-radius: 5px !important; font-family: 'Orbitron', sans-serif !important; font-size: 14px !important; font-weight: 600 !important; letter-spacing: 2px !important; cursor: pointer !important; text-transform: uppercase !important;">Все</button>
+            <button class="filter-btn" data-filter="ai" style="background: transparent !important; color: #00D9FF !important; border: 2px solid #00D9FF !important; padding: 12px 30px !important; border-radius: 5px !important; font-family: 'Orbitron', sans-serif !important; font-size: 14px !important; font-weight: 600 !important; letter-spacing: 2px !important; cursor: pointer !important; text-transform: uppercase !important;">AI</button>
+            <button class="filter-btn" data-filter="devops" style="background: transparent !important; color: #00D9FF !important; border: 2px solid #00D9FF !important; padding: 12px 30px !important; border-radius: 5px !important; font-family: 'Orbitron', sans-serif !important; font-size: 14px !important; font-weight: 600 !important; letter-spacing: 2px !important; cursor: pointer !important; text-transform: uppercase !important;">DevOps</button>
+            <button class="filter-btn" data-filter="automation" style="background: transparent !important; color: #00D9FF !important; border: 2px solid #00D9FF !important; padding: 12px 30px !important; border-radius: 5px !important; font-family: 'Orbitron', sans-serif !important; font-size: 14px !important; font-weight: 600 !important; letter-spacing: 2px !important; cursor: pointer !important; text-transform: uppercase !important;">Автоматизация</button>
+            <button class="filter-btn" data-filter="business" style="background: transparent !important; color: #00D9FF !important; border: 2px solid #00D9FF !important; padding: 12px 30px !important; border-radius: 5px !important; font-family: 'Orbitron', sans-serif !important; font-size: 14px !important; font-weight: 600 !important; letter-spacing: 2px !important; cursor: pointer !important; text-transform: uppercase !important;">Бизнес</button>
+            <button class="filter-btn" data-filter="biotech" style="background: transparent !important; color: #00D9FF !important; border: 2px solid #00D9FF !important; padding: 12px 30px !important; border-radius: 5px !important; font-family: 'Orbitron', sans-serif !important; font-size: 14px !important; font-weight: 600 !important; letter-spacing: 2px !important; cursor: pointer !important; text-transform: uppercase !important;">BioTech</button>
         </div>
 
         <!-- Сетка статей -->
@@ -290,10 +290,17 @@
 
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Убираем активный класс у всех кнопок
-                filterBtns.forEach(b => b.classList.remove('active'));
-                // Добавляем активный класс текущей
+                // Убираем активный класс у всех кнопок и сбрасываем стили
+                filterBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.style.background = 'transparent';
+                    b.style.color = '#00D9FF';
+                });
+
+                // Добавляем активный класс и меняем стили текущей
                 btn.classList.add('active');
+                btn.style.background = '#00D9FF';
+                btn.style.color = '#0a0a0a';
 
                 const filter = btn.getAttribute('data-filter');
 
