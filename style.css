@@ -127,6 +127,7 @@ body {
 .section-header {
     margin-bottom: 60px;
     text-align: left;
+    padding-left: 20px;
 }
 
 .section-title {
@@ -1625,7 +1626,7 @@ html {
 }
 
 .service-card:hover .service-icon svg {
-    stroke: var(--text-primary);
+    stroke: var(--cyan);
     filter: drop-shadow(0 0 10px var(--cyan));
 }
 
