@@ -1,0 +1,184 @@
+[
+  {
+    "updatedAt": "2026-02-05T19:29:46.052Z",
+    "createdAt": "2026-02-05T19:23:00.900Z",
+    "id": "2aLvzmt0P3iKzj10fWH4I",
+    "name": "na8us_expansion",
+    "description": null,
+    "active": false,
+    "isArchived": false,
+    "nodes": [
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "application-form",
+          "responseMode": "responseNode",
+          "options": {}
+        },
+        "id": "5b135208-d9fc-47ad-8001-905d0a68676c",
+        "name": "Webhook: Application Form",
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 1.1,
+        "position": [-128, -16],
+        "webhookId": "application-form-webhook"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [
+              {
+                "value1": "={{ $json.name }}",
+                "operation": "isNotEmpty"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "id": "191bcb21-0a8f-4c5b-bf52-ea383b5a49b7",
+        "name": "Validate Data",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2,
+        "position": [80, -16]
+      },
+      {
+        "parameters": {
+          "chatId": "6704790457",
+          "text": "🎉 **НОВАЯ ЗАЯВКА НА NA8US.COM**\n\n👤 **Имя:** {{ $json.name }}\n📞 **Контакт:** {{ $json.contact }}\n🔧 **Услуга:** {{ $json.service }}\n\n━━━━━━━━━━━━━━━━━━━━━━\n\n📝 **Задача:**\n{{ $json.task }}\n\n📊 **Ситуация:** {{ $json.situation }}\n⏱ **Сроки:** {{ $json.timeline }}\n💰 **Бюджет:** {{ $json.budget }}\n\n🔗 **Источник:** {{ $json.source }}\n⏰ **Время:** {{ $json.timestamp }}",
+          "additionalFields": {}
+        },
+        "id": "9906a379-b58f-4079-b401-a3911b4e3510",
+        "name": "Send to Telegram",
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [272, -112],
+        "webhookId": "c7d86da4-1eb5-4e65-8dd7-31d667c8cf3a",
+        "credentials": {
+          "telegramApi": {
+            "id": "yNkyz5ELxz68DghB",
+            "name": "na8us_expansion"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "respondWith": "json",
+          "responseBody": "={{ { success: true, message: \"Заявка получена! Мы свяжемся с вами в ближайшее время.\" } }}",
+          "options": {}
+        },
+        "id": "608f678d-5918-474d-bca7-ca88700ce688",
+        "name": "Response: Success",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "typeVersion": 1.1,
+        "position": [480, -112]
+      },
+      {
+        "parameters": {
+          "respondWith": "json",
+          "responseBody": "={{ { success: false, message: \"Ошибка валидации\" } }}",
+          "options": {
+            "responseCode": 400
+          }
+        },
+        "id": "63ba4061-c8f9-4203-b6a1-eb42eedc6a4f",
+        "name": "Response: Error",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "typeVersion": 1.1,
+        "position": [272, 96]
+      }
+    ],
+    "connections": {
+      "Webhook: Application Form": {
+        "main": [
+          [
+            {
+              "node": "Validate Data",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Validate Data": {
+        "main": [
+          [
+            {
+              "node": "Send to Telegram",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Response: Error",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Send to Telegram": {
+        "main": [
+          [
+            {
+              "node": "Response: Success",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1",
+      "availableInMCP": false
+    },
+    "staticData": null,
+    "meta": {
+      "templateCredsSetupCompleted": true
+    },
+    "pinData": {},
+    "versionId": "aee0d9e5-9337-4c56-b4ca-ffb77ed375b7",
+    "activeVersionId": "aee0d9e5-9337-4c56-b4ca-ffb77ed375b7",
+    "versionCounter": 8,
+    "triggerCount": 1,
+    "tags": [
+      {
+        "updatedAt": "2026-02-05T19:23:27.475Z",
+        "createdAt": "2026-02-05T19:23:27.475Z",
+        "id": "JHHRdcNRdNgYf8vk",
+        "name": "Application Forms"
+      },
+      {
+        "updatedAt": "2026-01-20T18:47:16.335Z",
+        "createdAt": "2026-01-11T13:46:08.426Z",
+        "id": "L8xeK64OaLmEv8tN",
+        "name": "Na8us"
+      },
+      {
+        "updatedAt": "2026-02-05T19:23:27.782Z",
+        "createdAt": "2026-02-05T19:23:27.475Z",
+        "id": "wLB3v2uhGFC4l6ah",
+        "name": "Telegram"
+      }
+    ],
+    "shared": [
+      {
+        "updatedAt": "2026-02-05T19:23:00.902Z",
+        "createdAt": "2026-02-05T19:23:00.902Z",
+        "role": "workflow:owner",
+        "workflowId": "2aLvzmt0P3iKzj10fWH4I",
+        "projectId": "D0jlVFx1gNN5a3KZ",
+        "project": {
+          "updatedAt": "2026-01-07T20:33:48.275Z",
+          "createdAt": "2026-01-07T18:00:34.814Z",
+          "id": "D0jlVFx1gNN5a3KZ",
+          "name": "EDUARD SHELEH <edsheleh@gmail.com>",
+          "type": "personal",
+          "icon": null,
+          "description": null,
+          "creatorId": "c8851185-21eb-41fc-bde3-7edf4a133b98"
+        }
+      }
+    ]
+  }
+]

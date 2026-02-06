@@ -573,7 +573,7 @@
             <h3 class="modal-title">НАЗВАНИЕ УСЛУГИ</h3>
             <p class="modal-desc">Описание услуги...</p>
             <div class="modal-actions">
-                <button class="btn-form primary">[ ЗАПОЛНИ ЗАЯВКУ → ]</button>
+                <button class="btn-form primary" onclick="openApplicationModal()">[ ЗАПОЛНИ ЗАЯВКУ → ]</button>
                 <a href="https://t.me/nabus_blog/10" target="_blank" class="btn-telegram">[ TELEGRAM → ]</a>
             </div>
         </div>
@@ -635,6 +635,154 @@
                 <a href="resume.html" target="_blank" class="btn-telegram">[ ПОЛНОЕ РЕЗЮМЕ → ]</a>
                 <a href="https://t.me/nabus79" target="_blank" class="btn-form primary">[ TELEGRAM → ]</a>
             </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно формы заявки -->
+    <div id="application-modal" class="modal">
+        <div class="modal-content application-modal-content">
+            <button class="modal-close" onclick="closeApplicationModal()">✕</button>
+
+            <div class="application-header">
+                <h2 class="application-title">ЗАЯВКА</h2>
+                <p class="application-subtitle">Расскажите о вашем проекте</p>
+            </div>
+
+            <form id="application-form" class="application-form">
+                <!-- 1. Имя -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <span class="form-number">01</span>
+                        <span class="form-text">Ваше имя *</span>
+                    </label>
+                    <input type="text" name="name" required class="form-input" placeholder="Как к вам обращаться?">
+                </div>
+
+                <!-- 2. Telegram или Email -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <span class="form-number">02</span>
+                        <span class="form-text">Telegram или Email *</span>
+                    </label>
+                    <input type="text" name="contact" required class="form-input" placeholder="@username или email@example.com">
+                </div>
+
+                <!-- 3. Услуга -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <span class="form-number">03</span>
+                        <span class="form-text">Какая услуга интересует? *</span>
+                    </label>
+                    <select name="service" required class="form-select">
+                        <option value="">Выберите услугу</option>
+                        <option value="business-core">Архитектура Бизнес-Ядра</option>
+                        <option value="automation">Нейро-Автоматизация</option>
+                        <option value="vibecoding">Вайбкодинг</option>
+                        <option value="ai-agents">Цифровые Личности (AI агенты)</option>
+                        <option value="geo">GEO-Экспансия</option>
+                        <option value="media">Генеративная Медиа-Фабрика</option>
+                        <option value="consultation">Не уверен / Нужна консультация</option>
+                    </select>
+                </div>
+
+                <!-- 4. Задача -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <span class="form-number">04</span>
+                        <span class="form-text">Опишите вашу задачу *</span>
+                    </label>
+                    <textarea name="task" required class="form-textarea" rows="3" placeholder="Кратко: например, 'Автоматизировать обработку заказов в ресторане'"></textarea>
+                </div>
+
+                <!-- 5. Текущая ситуация -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <span class="form-number">05</span>
+                        <span class="form-text">Текущая ситуация</span>
+                    </label>
+                    <div class="form-radio-group">
+                        <label class="form-radio">
+                            <input type="radio" name="situation" value="idea">
+                            <span>Только идея, нет ничего</span>
+                        </label>
+                        <label class="form-radio">
+                            <input type="radio" name="situation" value="business">
+                            <span>Есть бизнес/проект, нужен AI</span>
+                        </label>
+                        <label class="form-radio">
+                            <input type="radio" name="situation" value="improve">
+                            <span>Уже используем AI, хотим улучшить</span>
+                        </label>
+                        <label class="form-radio">
+                            <input type="radio" name="situation" value="other">
+                            <span>Другое</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 6. Сроки -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <span class="form-number">06</span>
+                        <span class="form-text">Желаемые сроки</span>
+                    </label>
+                    <div class="form-radio-group">
+                        <label class="form-radio">
+                            <input type="radio" name="timeline" value="asap">
+                            <span>Как можно скорее</span>
+                        </label>
+                        <label class="form-radio">
+                            <input type="radio" name="timeline" value="month">
+                            <span>В течение месяца</span>
+                        </label>
+                        <label class="form-radio">
+                            <input type="radio" name="timeline" value="2-3months">
+                            <span>2-3 месяца</span>
+                        </label>
+                        <label class="form-radio">
+                            <input type="radio" name="timeline" value="flexible">
+                            <span>Нет сроков</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 7. Бюджет -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <span class="form-number">07</span>
+                        <span class="form-text">Примерный бюджет (опционально)</span>
+                    </label>
+                    <select name="budget" class="form-select">
+                        <option value="skip">Не указывать</option>
+                        <option value="1000">До $1,000</option>
+                        <option value="1000-3000">$1,000 - $3,000</option>
+                        <option value="3000-10000">$3,000 - $10,000</option>
+                        <option value="10000">$10,000+</option>
+                    </select>
+                </div>
+
+                <!-- 8. Источник -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <span class="form-number">08</span>
+                        <span class="form-text">Как вы о нас узнали?</span>
+                    </label>
+                    <select name="source" class="form-select">
+                        <option value="telegram">Telegram</option>
+                        <option value="social">Instagram / TikTok / YouTube</option>
+                        <option value="linkedin">LinkedIn</option>
+                        <option value="referral">Рекомендация</option>
+                        <option value="search">Google / Поиск</option>
+                        <option value="other">Другое</option>
+                    </select>
+                </div>
+
+                <!-- Кнопка отправки -->
+                <div class="form-submit">
+                    <button type="submit" class="btn-submit">[ ОТПРАВИТЬ ЗАЯВКУ → ]</button>
+                    <p class="form-privacy">🔒 Ваши данные защищены и не передаются третьим лицам</p>
+                </div>
+            </form>
         </div>
     </div>
 

@@ -209,6 +209,21 @@ function closeAboutModal() {
     document.body.style.overflow = '';
 }
 
+// === APPLICATION MODAL ===
+function openApplicationModal() {
+    const modal = document.getElementById('application-modal');
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    // Закрыть service modal если открыт
+    document.getElementById('service-modal').classList.remove('active');
+}
+
+function closeApplicationModal() {
+    document.getElementById('application-modal').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
 // === MARKDOWN PARSER ===
 function parseMarkdown(markdown) {
     let content = markdown.replace(/^---[\s\S]*?---\n*/m, '');
@@ -233,6 +248,53 @@ function parseMarkdown(markdown) {
 
 // === EVENT LISTENERS ===
 document.addEventListener('DOMContentLoaded', function () {
+
+    // Обработка отправки формы заявки
+    const applicationForm = document.getElementById('application-form');
+    if (applicationForm) {
+        applicationForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Собираем данные формы
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            // Добавляем timestamp
+            data.timestamp = new Date().toISOString();
+            data.source = 'na8us.com';
+
+            // Логируем в консоль
+            console.log('📧 Форма отправлена:', data);
+
+            // Отправляем на n8n webhook
+            try {
+                const response = await fetch('https://n8n.na8us.com/webhook/application-form', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    // Успех
+                    alert('✅ Спасибо за заявку! Мы свяжемся с вами в ближайшее время.');
+                    this.reset();
+                    closeApplicationModal();
+                } else {
+                    // Ошибка сервера
+                    alert('⚠️ Ошибка отправки. Пожалуйста, напишите в Telegram: @nabus79');
+                }
+            } catch (error) {
+                // Ошибка сети
+                console.error('Ошибка:', error);
+                alert('⚠️ Ошибка отправки. Пожалуйста, напишите в Telegram: @nabus79');
+            }
+        });
+    }
 
     // Клик по карточкам услуг
     document.querySelectorAll('.service-card').forEach(card => {
