@@ -269,9 +269,9 @@ document.addEventListener('DOMContentLoaded', function () {
             // Логируем в консоль
             console.log('📧 Форма отправлена:', data);
 
-            // Отправляем на n8n webhook
+            // Отправляем на Cloudflare Worker
             try {
-                const response = await fetch('https://n8n.na8us.com/webhook/application-form', {
+                const response = await fetch('https://na8us-form-handler.edsheleh.workers.dev', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
