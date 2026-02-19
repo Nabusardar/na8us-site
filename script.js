@@ -193,7 +193,7 @@ function openArticleModal(articleId) {
         .then(markdown => {
             // Добавляем картинку + контент (с версией чтобы обойти кэш)
             const cacheBuster = Date.now();
-            let html = `<img src="${article.img}?v=${cacheBuster}" alt="Article cover" class="article-cover" style="width: 100%; max-height: 300px; object-fit: cover; border-radius: 12px; margin-bottom: 25px; border: 1px solid rgba(0, 243, 255, 0.2);" onerror="this.style.display='none'">`;
+            let html = `<img src="${article.img}?v=${cacheBuster}" alt="Article cover" class="article-cover" style="width: 100%; max-height: 600px; object-fit: contain; border-radius: 12px; margin-bottom: 25px; border: 1px solid rgba(0, 243, 255, 0.2);" onerror="this.style.display='none'">`;
             html += parseMarkdown(markdown);
             body.innerHTML = html;
         })
