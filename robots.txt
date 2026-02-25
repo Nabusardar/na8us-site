@@ -1,0 +1,16 @@
+# robots.txt для NABUS EXPANSION (na8us.com)
+# Разрешаем поисковым роботам индексировать сайт
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://na8us.com/sitemap.xml
+
+# Disallow specific paths if needed in future
+# Disallow: /admin/
+# Disallow: /private/
+# Disallow: /backup/
+
+# Crawl-delay (optional, limits requests per second)
+# Crawl-delay: 1
