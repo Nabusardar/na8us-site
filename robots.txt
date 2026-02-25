@@ -8,9 +8,8 @@ Allow: /
 Sitemap: https://na8us.com/sitemap.xml
 
 # Disallow specific paths if needed in future
-# Disallow: /admin/
-# Disallow: /private/
 # Disallow: /backup/
+# Disallow: /.instructions/
 
 # Crawl-delay (optional, limits requests per second)
 # Crawl-delay: 1
