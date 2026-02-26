@@ -39,6 +39,15 @@
 1. **Создать favicon разных размеров** (#16) - 16x16, 32x32, 192x192, 512x512
 2. **Провести финальный SEO аудит** (#25) - полная проверка
 
+### Accessibility (80→100):
+3. **Add aria-label to buttons** - improve accessibility
+4. **Improve color contrast** - WCAG AA compliance
+5. **Add main landmark** - semantic HTML
+
+### Performance (90→93+):
+6. **Minify CSS** - ожидаемая экономия 3 КиБ
+7. **Add width/height to images** - CLS stability
+
 ### Отложенные:
 4. **Safari fraud warning** (#31) - проверить 27.02.2026
 5. **Напоминание о Safari** - ждем ответ от Apple
