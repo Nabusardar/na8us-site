@@ -1,0 +1,4 @@
+  File "/var/www/na8us/telegram_webhook.py", line 156
+    self.wfile.write(json.dumps(response).encode('utf-8')
+                    ^
+SyntaxError: '(' was never closed
