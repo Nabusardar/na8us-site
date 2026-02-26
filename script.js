@@ -124,7 +124,7 @@ const articlesData = {
     },
     'article4': {
         md: 'logs/articles/article4/article4.md',
-        img: 'logs/articles/article4/article4.jpg'
+        img: 'logs/articles/article4/article4.png'
     },
     'article5': {
         md: 'logs/articles/article5/article5.md',
