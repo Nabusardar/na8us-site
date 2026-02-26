@@ -56,8 +56,16 @@
 
 ## 📁 ВАЖНЫЕ ФАЙЛЫ:
 
-### Локальные:
-- `/Users/nabusardar/Developer/Na8us_site/` - рабочий проект
+### 🧠 СИСТЕМА ЗНАНИЙ (ОБЩАЯ для всех проектов):
+- `/Users/nabusardar/Developer/_KNOWLEDGE_BASE/` - база знаний C.A.L.V.I.N.
+  - `LESSONS_LEARNED.md` - все ошибки и решения
+  - `DEPLOYMENT_CHECKLIST.md` - чек-лист перед деплоем
+  - `COMMON_PITFALLS.md` - типичные ошибки
+  - `README.md` - как пользоваться системой знаний
+
+### Локальные (проекты):
+- `/Users/nabusardar/Developer/Na8us_site/` - сайт na8us.com
+- `/Users/nabusardar/Developer/na8us-assistants/` - Telegram бот
 - `/Users/nabusardar/Developer/Neural-Academy/` - база знаний
 - `/Users/nabusardar/Developer/safari_problems/` - документы по Safari
 
@@ -66,6 +74,11 @@
 - Путь: `/var/www/na8us/`
 - Git репозиторий: `/root/my-server/site/` (старый, не используется)
 
+### 📋 Инструкции (этот проект):
+- `/Users/nabusardar/Developer/Na8us_site/.instructions/SESSION_CONTEXT.md` - этот файл
+- `/Users/nabusardar/Developer/Na8us_site/.instructions/GIT_WORKFLOW.md` - Git правила
+- `/Users/nabusardar/Developer/Na8us_site/.instructions/PAGESPEED_VARIATIONS.md` - PageSpeed правила
+
 ---
 
 ## 🔧 ЧТО ДЕЛАТЬ В НОВОМ ЧАТЕ:
@@ -73,10 +86,18 @@
 Скопируй этот текст в новое сообщение:
 
 ```
-C.A.L.V.I.N., прочитай ВСЕ инструкции в .instructions/ (SESSION_CONTEXT.md + GIT_WORKFLOW.md) и продолжим с задачей #____.
+C.A.L.V.I.N., прочитай ВСЕ инструкции:
+
+1. Система знаний: /Users/nabusardar/Developer/_KNOWLEDGE_BASE/README.md
+2. Этот проект: .instructions/SESSION_CONTEXT.md + GIT_WORKFLOW.md
+
+И продолжим с задачей #____.
 ```
 
-**КРИТИЧНО:** ВСЕГДА читать GIT_WORKFLOW.md перед любыми изменениями!
+**КРИТИЧНО:**
+1. ВСЕГДА читать LESSONS_LEARNED.md (из _KNOWLEDGE_BASE) перед работой
+2. ВСЕГДА читать GIT_WORKFLOW.md перед любыми изменениями!
+3. ВСЕГДА проходить DEPLOYMENT_CHECKLIST.md перед деплоем
 
 ---
 
