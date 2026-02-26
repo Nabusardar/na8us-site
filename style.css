@@ -35,6 +35,12 @@ body {
     overflow-x: hidden;
 }
 
+/* Responsive Images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 /* ═══════════════════════════════════════════════════════════
    МАТРИЧНЫЙ ЭФФЕКТ (НОВОЕ)
    ═══════════════════════════════════════════════════════════ */
@@ -1601,6 +1607,21 @@ body {
     .footer-content {
         flex-direction: column;
         text-align: center;
+    }
+
+    /* Touch Targets для кнопок (минимум 44x44px по рекомендациям Apple) */
+    .btn-details,
+    .about-btn,
+    .btn-telegram,
+    .btn-form {
+        padding: 14px 30px;
+        font-size: 14px;
+        min-height: 44px;
+    }
+
+    /* Font sizes на мобильных */
+    .venture-role {
+        font-size: 11px;
     }
 }
 
